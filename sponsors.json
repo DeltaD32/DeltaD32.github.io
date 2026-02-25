@@ -5,8 +5,8 @@
       "image": "https://deltad32.github.io/images/iPS.png"
     },
     {
-      "name": "BP",
-      "image": "https://deltad32.github.io/images/BP.png"
+      "name": "Benore",
+      "image": "https://deltad32.github.io/images/Benore.png"
     }
   ],
   "platinum": [
@@ -20,19 +20,7 @@
     }
   ],
   "gold": [
-    {
-      "name": "Capgemini",
-      "image": "https://deltad32.github.io/images/sponsors/gold/Capgemini.png"
-    },
-    {
-      "name": "Accenture",
-      "image": "https://deltad32.github.io/images/sponsors/gold/accenture.png"
-    }
   ],
   "silver": [
-    {
-      "name": "Cold Heading",
-      "image": "https://deltad32.github.io/images/sponsors/silver/Cold-Heading.png"
-    }
   ]
 }
