@@ -32,6 +32,15 @@
     }
   ],
   "gold": [
+
+    {
+        "name":"Alpha",
+        "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
+    },
+    {
+        "name":"Trigo",
+        "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+    }
   ],
   "silver": [
   ]
