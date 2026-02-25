@@ -41,10 +41,7 @@
       "name":"CPM",
       "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
     },
-    {
-      "name":"Kluber",
-      "image":"http://deltad32.github.io/images/Kluber.png"
-    },
+
     {
       "name":"Nippon",
       "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
@@ -73,5 +70,9 @@
     }
   ],
   "silver": [
+        {
+      "name":"Kluber",
+      "image":"http://deltad32.github.io/images/Kluber.png"
+    }
   ]
 }
