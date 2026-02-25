@@ -1622,12 +1622,31 @@ var hsVars = {
 	height: 300px;
 	width: 150px;
 	cursor: pointer;
-	transition: all 0.3s ease;
+	transition: all 0.6s ease;
 }
 
 .speaker-card:hover:not(.flipped) {
 	transform: translateY(-10px);
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay backdrop */
+.speaker-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9998;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	pointer-events: none;
+}
+
+.speaker-overlay.active {
+	opacity: 1;
+	pointer-events: auto;
 }
 
 .speaker-card-inner {
@@ -1652,17 +1671,7 @@ var hsVars = {
 
 .speaker-card.flipped .speaker-card-inner {
 	transform: rotateY(180deg);
-}
-
-.speaker-card.flipped::before {
-	content: "";
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: 9998;
+	z-index: 10000;
 }
 
 .speaker-card-front,
@@ -1786,12 +1795,16 @@ var hsVars = {
 	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 	padding-bottom: 15px;
 	width: 100%;
+	opacity: 0;
+	transition: opacity 0.4s ease 0.6s;
+	color:#FFFFFF;
 }
 
 .speaker-card.flipped .speaker-card-back h4 {
 	font-size: 28px;
 	margin-bottom: 25px;
 	padding-bottom: 20px;
+	opacity: 1;
 }
 
 .speaker-card-back .bio {
@@ -1801,12 +1814,15 @@ var hsVars = {
 	color: rgba(255, 255, 255, 0.95);
 	overflow-y: auto;
 	max-height: 300px;
+	opacity: 0;
+	transition: opacity 0.4s ease 0.6s;
 }
 
 .speaker-card.flipped .speaker-card-back .bio {
 	font-size: 16px;
 	line-height: 1.8;
 	max-height: none;
+	opacity: 1;
 }
 
 /* Mobile Responsive */
@@ -1998,10 +2014,53 @@ var hsVars = {
 
 	function initCardFlips() {
 		const cards = document.querySelectorAll('.speaker-card');
+		let overlay = null;
+		let activeCard = null;
+
 		cards.forEach(card => {
 			card.addEventListener('click', function(e) {
 				e.stopPropagation();
+				
+				// Create overlay if it doesn't exist
+				if (!overlay) {
+					overlay = document.createElement('div');
+					overlay.className = 'speaker-overlay';
+					document.body.appendChild(overlay);
+					
+					// Close card when clicking overlay or anywhere outside the card
+					overlay.addEventListener('click', function() {
+						if (activeCard) {
+							activeCard.classList.remove('flipped');
+							overlay.classList.remove('active');
+							document.body.style.overflow = '';
+							activeCard = null;
+						}
+					});
+					
+					// Close card when pressing Escape
+					document.addEventListener('keydown', function(e) {
+						if (e.key === 'Escape' && activeCard) {
+							activeCard.classList.remove('flipped');
+							overlay.classList.remove('active');
+							document.body.style.overflow = '';
+							activeCard = null;
+						}
+					});
+				}
+				
+				// Toggle flipped state
 				this.classList.toggle('flipped');
+				
+				// Toggle overlay visibility and prevent scrolling
+				if (this.classList.contains('flipped')) {
+					overlay.classList.add('active');
+					document.body.style.overflow = 'hidden';
+					activeCard = this;
+				} else {
+					overlay.classList.remove('active');
+					document.body.style.overflow = '';
+					activeCard = null;
+				}
 			});
 		});
 	}
