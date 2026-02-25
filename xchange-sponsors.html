@@ -1854,61 +1854,33 @@ margin-bottom: 0rem;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
     transition: filter 0.3s ease;
+	width: 150px;
+	height:1500px;
+	object-fit: contain;
+	padding: 10px;
+
+
 }
 .sponsor-logos-wrapper img:hover {
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%);
 }
+.sponsor-logos-container {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.sponsor-logos-container::-webkit-scrollbar {
+	display: none;
+}
 </style>
 
-<div class="row-fluid-wrapper row-depth-1 row-number-13a dnd-section" style="background-color: #f8f9fa; padding: 40px 0;">
+<div class="row-fluid-wrapper row-depth-1 row-number-13a dnd-section" style="background-color: #f8f9fa; padding: 40px 0;" id="sponsors-container">
 <div class="row-fluid">
 <div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
 
-<!-- Diamond Sponsors -->
-<div class="row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section" data-sponsor-tier="diamond" style="margin-bottom: 30px;">
-<div class="row-fluid">
-<div class="span12 widget-span widget-type-cell" style="text-align: center;">
-<h3 style="color: #333; margin-bottom: 20px;">Diamond Sponsors</h3>
-<div class="sponsor-logos-container" data-sponsor-tier="diamond">
-<div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px;">
-<img src="https://deltad32.github.io/images/sponsors/diamond/ABL.png" alt="Diamond Sponsor" style="max-width: 100px; height: auto;">
-<img src="https://deltad32.github.io/images/sponsors/diamond/BP.png" alt="Diamond Sponsor" style="max-width: 100px; height: auto;">
-<img src="https://deltad32.github.io/images/sponsors/diamond/Century-3%201.png" alt="Diamond Sponsor" style="max-width: 100px; height: auto;">
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Platinum Sponsors -->
-<div class="row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section" data-sponsor-tier="platinum" style="margin-bottom: 30px;">
-<div class="row-fluid">
-<div class="span12 widget-span widget-type-cell" style="text-align: center;">
-<h3 style="color: #333; margin-bottom: 20px;">Platinum Sponsors</h3>
-<div class="sponsor-logos-container" data-sponsor-tier="platinum">
-<div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px;">
-<img src="https://deltad32.github.io/images/sponsors/platinum/accenture.png" alt="Platinum Sponsor" style="max-width: 100px; height: auto;">
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Gold and Silver Sponsors -->
-<div class="row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section" data-sponsor-tier="gold-silver">
-<div class="row-fluid">
-<div class="span12 widget-span widget-type-cell" style="text-align: center;">
-<h3 style="color: #333; margin-bottom: 20px;">Gold and Silver Sponsors</h3>
-<div class="sponsor-logos-container" data-sponsor-tier="gold-silver">
-<div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px;">
-<img src="https://deltad32.github.io/images/sponsors/gold/Capgemini.png" alt="Gold Sponsor" style="max-width: 100px; height: auto;">
-<img src="https://deltad32.github.io/images/sponsors/gold/accenture.png" alt="Gold Sponsor" style="max-width: 100px; height: auto;">
-<img src="https://deltad32.github.io/images/sponsors/silver/Cold-Heading.png" alt="Silver Sponsor" style="max-width: 100px; height: auto;">
-</div>
-</div>
-</div>
-</div>
+<!-- Sponsors will be dynamically loaded here -->
+<div id="dynamic-sponsors-loading" style="text-align: center; padding: 40px;">
+<p>Loading sponsors...</p>
 </div>
 
 </div><!--end widget-span -->
@@ -1917,150 +1889,374 @@ margin-bottom: 0rem;
 <!-- End Sponsor Logos Section -->
 
 <script>
-// Hide sponsor tier sections if they have no valid images
+// Dynamic Sponsor Loading System
 (function() {
-    // Wait for DOM to be fully loaded
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSponsorVisibility);
-    } else {
-        initSponsorVisibility();
+    // Embedded fallback data (will be used if fetch fails)
+    const FALLBACK_SPONSORS_DATA = {
+  "diamond": [
+    {
+      "name": "ABL",
+      "image": "https://www.bmwsupplierxchange.com/images/iPS.png"
+    },
+    {
+      "name": "Benore",
+      "image": "https://www.bmwsupplierxchange.com/images/Benore.png"
+    },
+    {
+      "name":"Conmoto",
+      "image":"http://deltad32.github.io/images/Conmoto.png"
     }
-
-    function initSponsorVisibility() {
-        const sponsorSections = document.querySelectorAll('.sponsor-tier-section');
+  ],
+  "platinum": [
+    {
+      "name": "Agile One",
+      "image": "https://www.bmwsupplierxchange.com/images/Agile-one.png"
+    },
+    {
+        "name":"Log Systems",
+        "image":"https://www.bmwsupplierxchange.com/images/LogSystems.png"
+    },
+        {
+        "name":"Korn Systems",
+        "image":"https://www.bmwsupplierxchange.com/images/Korn-Consult-Group.png"
+    },
+    {
+      "name":"Magna",
+      "image":"https://www.bmwsupplierxchange.com/images/Magna-Logo-HR.png"
+    }
+  ],
+  "gold": [
+    {
+        "name":"Alpha",
+        "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
+    },
+    {
+        "name":"Tajco",
+        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+    },
+    {
+        "name":"Trigo",
+        "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+    }
+  ],
+  "silver": [
+  ]
+};
+    
+    // Configuration - try multiple paths for the JSON file
+    const SPONSORS_JSON_URLS = [
+        'https://deltad32.github.io/sponsors.json',  // Absolute GitHub Pages URL (production)
+        '../sponsors.json',  // Relative path for local testing
+        '/sponsors.json'     // Root absolute path
+    ];
+    
+    const TIER_NAMES = {
+        'diamond': 'Diamond Sponsors',
+        'platinum': 'Platinum Sponsors',
+        'gold': 'Gold Sponsors',
+        'silver': 'Silver Sponsors'
+    };
+    
+    // Try loading from multiple URLs
+    async function fetchSponsorsData() {
+        let lastError = null;
         
-        sponsorSections.forEach(section => {
-            const tier = section.getAttribute('data-sponsor-tier');
-            const images = section.querySelectorAll('img');
-            
-            // If no images exist, hide immediately
-            if (images.length === 0) {
-                section.style.display = 'none';
-                return;
-            }
-            
-            // Track image load/error states
-            let loadedCount = 0;
-            let errorCount = 0;
-            const totalImages = images.length;
-            
-            function checkVisibility() {
-                // If all images failed to load, hide the section
-                if (errorCount === totalImages) {
-                    section.style.display = 'none';
-                }
-                // If at least one image loaded successfully, show the section
-                else if (loadedCount > 0) {
-                    section.style.display = '';
-                }
-            }
-            
-            images.forEach(img => {
-                // Check if image is already loaded (cached)
-                if (img.complete) {
-                    if (img.naturalHeight === 0) {
-                        errorCount++;
-                    } else {
-                        loadedCount++;
-                    }
+        for (const url of SPONSORS_JSON_URLS) {
+            try {
+                console.log('Attempting to load sponsors from:', url);
+                const response = await fetch(url);
+                console.log('Fetch response status:', response.status, 'for URL:', url);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('✅ Successfully loaded sponsors data from:', url);
+                    console.log('Data loaded:', data);
+                    return data;
                 } else {
-                    // Add event listeners for images still loading
-                    img.addEventListener('load', function() {
-                        loadedCount++;
-                        checkVisibility();
-                    });
-                    
-                    img.addEventListener('error', function() {
-                        errorCount++;
-                        // Hide the failed image
-                        this.style.display = 'none';
-                        checkVisibility();
-                    });
+                    console.warn('❌ HTTP error', response.status, 'from:', url);
                 }
+            } catch (error) {
+                console.warn('❌ Failed to load from', url, ':', error.message);
+                lastError = error;
+            }
+        }
+        
+        // If all fetch attempts fail, use fallback data
+        console.warn('⚠️ All fetch attempts failed, using embedded fallback data');
+        console.warn('Check if https://deltad32.github.io/sponsors.json is accessible in your browser');
+        return FALLBACK_SPONSORS_DATA;
+    }
+    
+    // Load sponsors from JSON
+    async function loadSponsors() {
+        const container = document.querySelector('#sponsors-container .span12');
+        const loadingDiv = document.getElementById('dynamic-sponsors-loading');
+        
+        if (!container) {
+            console.error('Sponsors container not found');
+            return;
+        }
+        
+        try {
+            // Fetch the sponsors JSON (or use fallback)
+            const sponsorsData = await fetchSponsorsData();
+            
+            console.log('Sponsors data loaded:', sponsorsData);
+            
+            // Remove loading message
+            if (loadingDiv) {
+                loadingDiv.remove();
+            }
+            
+            // Create sponsor sections for each tier
+            const tiers = ['diamond', 'platinum', 'gold', 'silver'];
+            let sponsorsAdded = 0;
+            
+            tiers.forEach(tier => {
+                const sponsors = sponsorsData[tier];
+                
+                // Skip if no sponsors for this tier
+                if (!sponsors || sponsors.length === 0) {
+                    console.log(`No sponsors found for ${tier} tier`);
+                    return;
+                }
+                
+                console.log(`Creating section for ${tier} tier with ${sponsors.length} sponsors`);
+                
+                // Create tier section
+                const tierSection = createTierSection(tier, sponsors);
+                container.appendChild(tierSection);
+                sponsorsAdded++;
             });
             
-            // Initial check for already-loaded images
-            checkVisibility();
-        });
+            console.log(`Total sponsor sections created: ${sponsorsAdded}`);
+            
+            // Initialize scrolling behavior
+            initScrollBehavior();
+            
+        } catch (error) {
+            console.error('Error loading sponsors:', error);
+            if (loadingDiv) {
+                loadingDiv.innerHTML = `
+                    <p style="color: #999;">Unable to load sponsor information at this time.</p>
+                    <p style="color: #999; font-size: 0.9em;">Error: ${error.message}</p>
+                `;
+            }
+        }
     }
-})();
-</script>
-
-<script>
-// Dynamic sponsor logo scrolling system
-(function() {
-    function checkSponsorLogoOverflow() {
-        const containers = document.querySelectorAll('.sponsor-logos-container');
+    
+    // Create a tier section with sponsors
+    function createTierSection(tier, sponsors) {
+        const section = document.createElement('div');
+        section.className = 'row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section';
+        section.setAttribute('data-sponsor-tier', tier);
+        section.style.marginBottom = '30px';
         
-        containers.forEach(container => {
-            const wrapper = container.querySelector('.sponsor-logos-wrapper');
-            if (!wrapper) return;
+        const tierName = TIER_NAMES[tier] || tier.charAt(0).toUpperCase() + tier.slice(1) + ' Sponsors';
+        
+        section.innerHTML = `
+            <div class="row-fluid">
+                <div class="span12 widget-span widget-type-cell" style="text-align: center;">
+                    <h3 style="color: #333; margin-bottom: 20px;">${tierName}</h3>
+                    <div class="sponsor-logos-container" data-sponsor-tier="${tier}">
+                        <div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
+                            ${sponsors.map(sponsor => createSponsorImage(sponsor, tier)).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        return section;
+    }
+    
+    // Create sponsor image HTML
+    function createSponsorImage(sponsor, tier) {
+        const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
+        return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy">`;
+    }
+    
+    // Initialize scrolling behavior for overflow
+    function initScrollBehavior() {
+        let activeScrollAnimations = new Map(); // Track active scroll animations
+        
+        function checkSponsorLogoOverflow() {
+            const containers = document.querySelectorAll('.sponsor-logos-container');
             
-            // Reset styles to measure natural width
-            container.style.overflowX = '';
-            container.style.whiteSpace = '';
-            wrapper.style.flexWrap = '';
-            wrapper.style.display = 'flex';
-            
-            // Get container and content widths
-            const containerWidth = container.offsetWidth;
-            const wrapperWidth = wrapper.scrollWidth;
-            
-            // If content is wider than container, enable scrolling
-            if (wrapperWidth > containerWidth) {
-                container.style.overflowX = 'auto';
-                container.style.whiteSpace = 'nowrap';
-                container.style.webkitOverflowScrolling = 'touch';
-                container.style.padding = '20px 0';
-                wrapper.style.flexWrap = 'nowrap';
-                wrapper.style.display = 'inline-flex';
-                wrapper.style.padding = '0 20px';
+            containers.forEach(container => {
+                const wrapper = container.querySelector('.sponsor-logos-wrapper');
+                if (!wrapper) return;
                 
-                // Make images inline-block for scrolling
-                const images = wrapper.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.display = 'inline-block';
-                });
-            } else {
-                // Keep centered layout if content fits
-                container.style.overflowX = 'visible';
-                wrapper.style.flexWrap = 'wrap';
-            }
-        });
-    }
-    
-    // Check on load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', checkSponsorLogoOverflow);
-    } else {
-        checkSponsorLogoOverflow();
-    }
-    
-    // Recheck on window resize
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(checkSponsorLogoOverflow, 250);
-    });
-    
-    // Recheck when images load
-    const sponsorImages = document.querySelectorAll('.sponsor-logos-wrapper img');
-    let loadedImages = 0;
-    sponsorImages.forEach(img => {
-        if (img.complete) {
-            loadedImages++;
-            if (loadedImages === sponsorImages.length) {
-                checkSponsorLogoOverflow();
-            }
-        } else {
-            img.addEventListener('load', function() {
-                loadedImages++;
-                if (loadedImages === sponsorImages.length) {
-                    checkSponsorLogoOverflow();
+                // If we're now on desktop, disable auto-scroll for this container
+                if (window.innerWidth > 768) {
+                    if (activeScrollAnimations.has(container)) {
+                        // Stop scrolling and clean up
+                        activeScrollAnimations.get(container).stop();
+                        activeScrollAnimations.delete(container);
+                    }
+                    // Reset to single copy
+                    const originalHTML = wrapper.getAttribute('data-original-html');
+                    if (originalHTML) {
+                        wrapper.innerHTML = originalHTML;
+                    }
+                    container.style.overflowX = 'visible';
+                    wrapper.style.flexWrap = 'wrap';
+                    return;
+                }
+                
+                // Reset styles to measure natural width
+                container.style.overflowX = '';
+                container.style.whiteSpace = '';
+                wrapper.style.flexWrap = '';
+                wrapper.style.display = 'flex';
+                
+                // Get container and content widths
+                const containerWidth = container.offsetWidth;
+                const wrapperWidth = wrapper.scrollWidth;
+                
+                // If content is wider than container, enable scrolling
+                if (wrapperWidth > containerWidth) {
+                    container.style.overflowX = 'auto';
+                    container.style.whiteSpace = 'nowrap';
+                    container.style.webkitOverflowScrolling = 'touch';
+                    container.style.padding = '20px 0';
+                    wrapper.style.flexWrap = 'nowrap';
+                    wrapper.style.display = 'inline-flex';
+                    wrapper.style.padding = '0 20px';
+                    
+                    // Make images inline-block for scrolling
+                    const images = wrapper.querySelectorAll('img');
+                    images.forEach(img => {
+                        img.style.display = 'inline-block';
+                    });
+                    
+                    // Initialize auto-scrolling animation if not already active
+                    if (!activeScrollAnimations.has(container)) {
+                        initAutoScroll(container, wrapper, activeScrollAnimations);
+                    }
+                } else {
+                    // Keep centered layout if content fits
+                    container.style.overflowX = 'visible';
+                    wrapper.style.flexWrap = 'wrap';
                 }
             });
         }
-    });
+        
+        // Initialize auto-scroll animation for mobile/narrow views
+        function initAutoScroll(container, wrapper, activeScrollAnimations) {
+            // Only auto-scroll on narrow screens
+            if (window.innerWidth > 768) {
+                return;
+            }
+            
+            // Store original HTML on first scroll setup
+            if (!wrapper.getAttribute('data-original-html')) {
+                wrapper.setAttribute('data-original-html', wrapper.innerHTML);
+            }
+            
+            // Clone all items for infinite scroll effect
+            const originalHTML = wrapper.getAttribute('data-original-html');
+            
+            // Duplicate the items to create seamless infinite scroll
+            wrapper.innerHTML = originalHTML + originalHTML;
+            
+            const images = wrapper.querySelectorAll('img');
+            let oneSetWidth = 0;
+            const totalImages = images.length / 2; // Half are duplicates
+            let scrollPosition = 0;
+            let isScrolling = true; // Start scrolling immediately
+            const scrollSpeed = 0.3; // pixels per frame (slower)
+            let animationId = null;
+            
+            // Calculate initial width with a small delay to allow rendering
+            setTimeout(() => {
+                // Calculate the width of one set of items
+                oneSetWidth = 0;
+                for (let i = 0; i < totalImages; i++) {
+                    oneSetWidth += images[i].offsetWidth + 30; // 30px for gap
+                }
+            }, 100);
+            
+            // Create a continuous scroll animation
+            function autoScrollFrame() {
+                if (!isScrolling) {
+                    return;
+                }
+                
+                scrollPosition += scrollSpeed;
+                
+                // Reset to beginning seamlessly when we reach one full set
+                if (oneSetWidth > 0 && scrollPosition >= oneSetWidth) {
+                    scrollPosition = 0;
+                }
+                
+                container.scrollLeft = scrollPosition;
+                animationId = requestAnimationFrame(autoScrollFrame);
+            }
+            
+            // Start animation immediately
+            animationId = requestAnimationFrame(autoScrollFrame);
+            
+            // Pause on hover
+            container.addEventListener('mouseenter', () => {
+                isScrolling = false;
+            });
+            
+            // Resume on mouse leave
+            container.addEventListener('mouseleave', () => {
+                isScrolling = true;
+            });
+            
+            // Pause on touch
+            container.addEventListener('touchstart', () => {
+                isScrolling = false;
+            });
+            
+            container.addEventListener('touchend', () => {
+                // Resume scrolling after a delay if user didn't manually scroll
+                setTimeout(() => {
+                    isScrolling = true;
+                }, 500);
+            });
+            
+            // Store stop function for cleanup
+            activeScrollAnimations.set(container, {
+                stop: () => {
+                    isScrolling = false;
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                }
+            });
+        }
+        
+        // Initial check
+        checkSponsorLogoOverflow();
+        
+        // Recheck on window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(checkSponsorLogoOverflow, 250);
+        });
+        
+        // Recheck when images load
+        const sponsorImages = document.querySelectorAll('.sponsor-logos-wrapper img');
+        sponsorImages.forEach(img => {
+            if (!img.complete) {
+                img.addEventListener('load', checkSponsorLogoOverflow);
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                });
+            }
+        });
+    }
+    
+    // Start loading when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadSponsors);
+    } else {
+        loadSponsors();
+    }
 })();
 </script>
 
