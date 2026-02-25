@@ -1869,8 +1869,12 @@ margin-bottom: 0rem;
 	height:100px;
 	object-fit: contain;
 	padding: 10px;
-	animation: sponsorFadeIn 0.6s ease-out forwards;
 	opacity: 0;
+	transform: scale(0.95);
+}
+
+.sponsor-logos-wrapper img.animate {
+	animation: sponsorFadeIn 0.6s ease-out forwards;
 }
 
 .sponsor-logos-wrapper img:hover {
@@ -2162,6 +2166,9 @@ margin-bottom: 0rem;
             // Initialize scrolling behavior
             initScrollBehavior();
             
+            // Set up scroll-triggered animations
+            initScrollRevealAnimations();
+            
         } catch (error) {
             console.error('Error loading sponsors:', error);
             if (loadingDiv) {
@@ -2184,8 +2191,7 @@ margin-bottom: 0rem;
         
         const sponsorImages = sponsors.map((sponsor, index) => {
             const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
-            const delayMs = (index * 75); // 75ms stagger between each sponsor
-            return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto; animation-delay: ${delayMs}ms;" loading="lazy" class="sponsor-logo-item">`;
+            return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy" class="sponsor-logo-item" data-index="${index}">`;
         }).join('');
         
         section.innerHTML = `
@@ -2208,6 +2214,42 @@ margin-bottom: 0rem;
     function createSponsorImage(sponsor, tier) {
         const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
         return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy" class="sponsor-logo-item">`;
+    }
+    
+    // Initialize scroll-triggered animations for sponsor logos
+    function initScrollRevealAnimations() {
+        const sponsorImages = document.querySelectorAll('.sponsor-logo-item');
+        
+        if (!sponsorImages.length) {
+            console.warn('No sponsor images found for animation');
+            return;
+        }
+        
+        // Create Intersection Observer to trigger animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const index = parseInt(img.getAttribute('data-index'), 10) || 0;
+                    const delayMs = index * 75; // 75ms stagger
+                    
+                    // Delay the animation based on index for stagger effect
+                    setTimeout(() => {
+                        img.classList.add('animate');
+                    }, delayMs);
+                    
+                    // Stop observing this element once animated
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of element is visible
+        });
+        
+        // Observe all sponsor images
+        sponsorImages.forEach(img => {
+            observer.observe(img);
+        });
     }
     
     // Initialize scrolling behavior for overflow
