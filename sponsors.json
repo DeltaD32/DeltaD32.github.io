@@ -38,6 +38,18 @@
         "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
     },
     {
+      "name":"CPM",
+      "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
+    },
+    {
+        "name":"Tajco",
+        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+    },
+    {
+      "name":"Steel Tech",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
+    },
+    {
         "name":"Trigo",
         "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
     }
