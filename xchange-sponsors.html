@@ -1850,21 +1850,34 @@ margin-bottom: 0rem;
 
 <!-- Sponsor Logos Section -->
 <style>
+@keyframes sponsorFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .sponsor-logos-wrapper img {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
     transition: filter 0.3s ease;
 	width: 150px;
-	height:1500px;
+	height:100px;
 	object-fit: contain;
 	padding: 10px;
-
-
+	animation: sponsorFadeIn 0.6s ease-out forwards;
+	opacity: 0;
 }
+
 .sponsor-logos-wrapper img:hover {
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%);
 }
+
 .sponsor-logos-container {
 	scrollbar-width: none;
 	-ms-overflow-style: none;
@@ -1904,7 +1917,15 @@ margin-bottom: 0rem;
     },
     {
       "name":"Conmoto",
-      "image":"http://deltad32.github.io/images/Conmoto.png"
+      "image":"http://www.bmwsupplierxchange.com/images/Conmoto.png"
+    },
+    {
+      "name":"Diversified Protection Corporation",
+      "image":"https://www.bmwsupplierxchange.com/images/DPC.png"
+    },
+    {
+      "name": "Partner Academy",
+      "image":"https://www.bmwsupplierxchange.com/images/Partner_Academy.png"
     }
   ],
   "platinum": [
@@ -1912,6 +1933,15 @@ margin-bottom: 0rem;
       "name": "Agile One",
       "image": "https://www.bmwsupplierxchange.com/images/Agile-one.png"
     },
+    {
+      "name": "Carolina Handling",
+      "image": "https://www.bmwsupplierxchange.com/images/CarolinaHandling.png"
+    },
+    {
+      "name": "Evans General Contracting",
+      "image":"https://www.bmwsupplierxchange.com/images/EvansGeneral.png"
+    },
+
     {
         "name":"Log Systems",
         "image":"https://www.bmwsupplierxchange.com/images/LogSystems.png"
@@ -1926,22 +1956,121 @@ margin-bottom: 0rem;
     }
   ],
   "gold": [
+
     {
         "name":"Alpha",
         "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
     },
     {
+      "name":"CPM",
+      "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
+    },
+    {
+      "name": "Daubert",
+      "image": "https://www.bmwsupplierxchange.com/images/Daubert.png"
+    },
+    {
+      "name": "Eisenmann",
+      "image": "https://www.bmwsupplierxchange.com/images/Eisenmann.png"
+    },
+
+    {
+      "name": "Lion Power",
+      "image": "https://www.bmwsupplierxchange.com/images/LionPower.png"
+    },
+    {
+      "name": "Mill Steel Company",
+      "image": "https://www.bmwsupplierxchange.com/images/MillSteel.png"
+    },
+
+    {
+      "name":"Nippon",
+      "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
+    },   
+
+    {
+      "name":"Smith Engineering",
+      "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
+    },
+    {
+      "name":"Steel Summit",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Summit.png"
+    },
+        
+    {
+      "name":"Steel Tech",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
+    },
+    {
         "name":"Tajco",
         "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
     },
+
     {
         "name":"Trigo",
         "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+    },
+    {
+      "name": "Yanfeng",
+      "image":"https://www.bmwsupplierxchange.com/images/Yanfeng.png"
     }
   ],
   "silver": [
+    {
+      "name": "Alloy Group",
+      "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
+    },
+    {
+      "name": "BCBS SC",
+      "image": "https://www.bmwsupplierxchange.com/images/SC-BlueCross-Blueshield.png"
+    },
+    {
+      "name": "JLL",
+      "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
+    },
+    {
+      "name":"Kluber",
+      "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
+    },
+    {
+      "name":"Kirchoff",
+      "image":"https://www.bmwsupplierxchange.com/images/Kirchhoff.png"
+    },
+    {
+      "name":"Kuka",
+      "image":"https://www.bmwsupplierxchange.com/images/Kuka.png"
+    },
+    {
+      "name":"Merrimak",
+      "image":"http://www.bmwsupplierxchange.com/images/Merrimak.png"
+    },
+    {
+      "name":"Nucor",
+      "image":"https://www.bmwsupplierxchange.com/images/Nucor.png"
+    },
+    {
+      "name":"P3",
+      "image":"https://www.bmwsupplierxchange.com/images/P3.png"
+    },   
+    {
+      "name": "Progressive Business Solutions",
+      "image": "https://www.bmwsupplierxchange.com/images/ProgressiveBusiness.png"
+    },
+    {
+      "name": "Revolution Trucking",
+      "image": "https://www.bmwsupplierxchange.com/images/RevolutionTrucking.png"
+    },
+    {
+      "name": "SPC",
+      "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
+    },
+    {
+      "name": "Synera",
+      "image": "https://www.bmwsupplierxchange.com/images/Synera.png"
+    }
   ]
-};
+}
+;
     
     // Configuration - try multiple paths for the JSON file
     const SPONSORS_JSON_URLS = [
@@ -2053,13 +2182,19 @@ margin-bottom: 0rem;
         
         const tierName = TIER_NAMES[tier] || tier.charAt(0).toUpperCase() + tier.slice(1) + ' Sponsors';
         
+        const sponsorImages = sponsors.map((sponsor, index) => {
+            const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
+            const delayMs = (index * 75); // 75ms stagger between each sponsor
+            return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto; animation-delay: ${delayMs}ms;" loading="lazy" class="sponsor-logo-item">`;
+        }).join('');
+        
         section.innerHTML = `
             <div class="row-fluid">
                 <div class="span12 widget-span widget-type-cell" style="text-align: center;">
                     <h3 style="color: #333; margin-bottom: 20px;">${tierName}</h3>
                     <div class="sponsor-logos-container" data-sponsor-tier="${tier}">
                         <div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
-                            ${sponsors.map(sponsor => createSponsorImage(sponsor, tier)).join('')}
+                            ${sponsorImages}
                         </div>
                     </div>
                 </div>
@@ -2072,7 +2207,7 @@ margin-bottom: 0rem;
     // Create sponsor image HTML
     function createSponsorImage(sponsor, tier) {
         const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
-        return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy">`;
+        return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy" class="sponsor-logo-item">`;
     }
     
     // Initialize scrolling behavior for overflow
