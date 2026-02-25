@@ -1601,7 +1601,6 @@ var hsVars = {
 	gap: 20px;
 	padding: 0 20px;
 	margin-bottom: 40px;
-	transition: all 0.6s ease;
 }
 
 .speakers-grid .speaker-card {
@@ -1620,10 +1619,10 @@ var hsVars = {
 /* Flip Card Styles */
 .speaker-card {
 	perspective: 1000px;
-	height: 300px;
-	width: 150px;
+	height: 250px;
+	width: 175px;
 	cursor: pointer;
-	transition: all 0.6s ease;
+	transition: width 0.6s ease, height 0.6s ease, top 0.6s ease, left 0.6s ease, transform 0.6s ease;
 }
 
 .speaker-card:hover:not(.flipped) {
@@ -1659,13 +1658,6 @@ var hsVars = {
 }
 
 .speaker-card.flipped {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 70vw;
-	height: 70vh;
-	z-index: 9999;
 	border-radius: 16px;
 	overflow: hidden;
 }
@@ -1710,7 +1702,128 @@ var hsVars = {
 	background: linear-gradient(135deg, #035978 0%, #009a97 100%);
 	color: white;
 	transform: rotateY(180deg);
-	overflow-y: auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	padding: 0;
+}
+
+/* Back card layout panels */
+.speaker-back-left {
+	width: 33.333%;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 30px 20px;
+	background: rgba(0, 0, 0, 0.15);
+	border-right: 1px solid rgba(255, 255, 255, 0.15);
+	gap: 14px;
+	opacity: 0;
+	transition: opacity 0.4s ease 0.6s;
+}
+
+.speaker-card.flipped .speaker-back-left {
+	opacity: 1;
+}
+
+.speaker-back-left .back-image-container {
+	width: 110px;
+	height: 110px;
+	flex-shrink: 0;
+	position: relative;
+}
+
+.speaker-back-left .back-image-container img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+	border: 3px solid rgba(255, 255, 255, 0.5);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.speaker-back-left h4 {
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	color: #ffffff;
+	margin: 0;
+	line-height: 1.3;
+}
+
+.speaker-back-linkedin {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	background: rgba(255, 255, 255, 0.15);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 8px 14px;
+	border-radius: 20px;
+	transition: background 0.2s ease, border-color 0.2s ease;
+	white-space: nowrap;
+}
+
+.speaker-back-linkedin:hover {
+	background: rgba(255, 255, 255, 0.28);
+	border-color: rgba(255, 255, 255, 0.7);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.speaker-back-linkedin svg {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+.speaker-back-right {
+	flex: 1;
+	padding: 30px 28px;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+/* Custom scrollbar — always visible, styled to match the card */
+.speaker-back-right::-webkit-scrollbar {
+	width: 6px;
+}
+
+.speaker-back-right::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.08);
+	border-radius: 3px;
+}
+
+.speaker-back-right::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.35);
+	border-radius: 3px;
+}
+
+.speaker-back-right::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.speaker-back-right .bio {
+	font-size: 15px;
+	line-height: 1.75;
+	text-align: left;
+	color: rgba(255, 255, 255, 0.95);
+	margin: 0;
+	opacity: 0;
+	transition: opacity 0.4s ease 0.6s;
+}
+
+.speaker-card.flipped .speaker-back-right .bio {
+	opacity: 1;
 }
 
 /* Image Styling with Oval Frame */
@@ -1788,43 +1901,7 @@ var hsVars = {
 	font-size: 14px;
 }
 
-.speaker-card-back h4 {
-	font-size: 18px;
-	font-weight: 700;
-	margin-bottom: 20px;
-	text-align: center;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-	padding-bottom: 15px;
-	width: 100%;
-	opacity: 0;
-	transition: opacity 0.4s ease 0.6s;
-	color:#FFFFFF;
-}
-
-.speaker-card.flipped .speaker-card-back h4 {
-	font-size: 28px;
-	margin-bottom: 25px;
-	padding-bottom: 20px;
-	opacity: 1;
-}
-
-.speaker-card-back .bio {
-	font-size: 13px;
-	line-height: 1.6;
-	text-align: left;
-	color: rgba(255, 255, 255, 0.95);
-	overflow-y: auto;
-	max-height: 300px;
-	opacity: 0;
-	transition: opacity 0.4s ease 0.6s;
-}
-
-.speaker-card.flipped .speaker-card-back .bio {
-	font-size: 16px;
-	line-height: 1.8;
-	max-height: none;
-	opacity: 1;
-}
+/* legacy back h4/bio selectors removed — replaced by .speaker-back-left / .speaker-back-right */
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -1999,11 +2076,28 @@ var hsVars = {
 		`;
 
 		// Back of card
+		const linkedinBtn = speaker.url && speaker.url.trim()
+			? `<a class="speaker-back-linkedin" href="${speaker.url.trim()}" target="_blank" rel="noopener">
+					<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+					</svg>
+					LinkedIn
+				</a>`
+			: '';
+
 		const back = document.createElement('div');
 		back.className = 'speaker-card-back';
 		back.innerHTML = `
-			<h4>${speaker.name}</h4>
-			<div class="bio">${speaker.bio}</div>
+			<div class="speaker-back-left">
+				<div class="back-image-container">
+					<img src="${speaker.picture}" alt="${speaker.name}" loading="lazy">
+				</div>
+				<h4>${speaker.name}</h4>
+				${linkedinBtn}
+			</div>
+			<div class="speaker-back-right">
+				<div class="bio">${speaker.bio}</div>
+			</div>
 		`;
 
 		inner.appendChild(front);
@@ -2017,50 +2111,182 @@ var hsVars = {
 		const cards = document.querySelectorAll('.speaker-card');
 		let overlay = null;
 		let activeCard = null;
+		let placeholder = null;
+		let originalRect = null;
+		let isAnimating = false;
 
-		cards.forEach(card => {
+		function ensureOverlay() {
+			if (!overlay) {
+				overlay = document.createElement('div');
+				overlay.className = 'speaker-overlay';
+				document.body.appendChild(overlay);
+				overlay.addEventListener('click', closeCard);
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape' && activeCard) closeCard();
+				});
+			}
+			return overlay;
+		}
+
+		// FLIP technique: records positions before an instant layout change,
+		// then animates siblings from their old positions to their new positions via transforms.
+		function flipSiblings(siblings, action, duration) {
+			// First: record current positions
+			var firsts = siblings.map(function(el) { return el.getBoundingClientRect(); });
+
+			// Perform the instant layout change
+			action();
+
+			// Force reflow so browser recalculates positions
+			document.body.offsetHeight;
+
+			// Last: record new positions and apply inverse transforms to fake old position
+			siblings.forEach(function(el, i) {
+				var dx = firsts[i].left - el.getBoundingClientRect().left;
+				var dy = firsts[i].top - el.getBoundingClientRect().top;
+				if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+					el.style.transition = 'none';
+					el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
+				}
+			});
+
+			// Force reflow to commit the inverse transforms
+			document.body.offsetHeight;
+
+			// Play: animate to zero transform (final position)
+			siblings.forEach(function(el) {
+				el.style.transition = 'transform ' + duration + 'ms ease';
+				el.style.transform = '';
+			});
+
+			// Clean up inline styles after animation
+			setTimeout(function() {
+				siblings.forEach(function(el) {
+					el.style.transition = '';
+					el.style.transform = '';
+				});
+			}, duration);
+		}
+
+		function getSiblings(excludeCard) {
+			return Array.from(document.querySelectorAll('.speaker-card')).filter(function(c) { return c !== excludeCard; });
+		}
+
+		function openCard(card) {
+			if (activeCard || isAnimating) return;
+			ensureOverlay();
+			activeCard = card;
+			isAnimating = true;
+
+			originalRect = card.getBoundingClientRect();
+
+			// Insert placeholder (no transition — FLIP handles siblings)
+			placeholder = document.createElement('div');
+			placeholder.style.cssText = 'width: ' + originalRect.width + 'px; height: ' + originalRect.height + 'px; flex: none; overflow: hidden; pointer-events: none;';
+			card.parentNode.insertBefore(placeholder, card);
+
+			var targetWidth = window.innerWidth * 0.7;
+			var targetHeight = window.innerHeight * 0.7;
+			var targetTop = (window.innerHeight - targetHeight) / 2;
+			var targetLeft = (window.innerWidth - targetWidth) / 2;
+
+			// Pin card at its current screen position
+			card.style.position = 'fixed';
+			card.style.top = originalRect.top + 'px';
+			card.style.left = originalRect.left + 'px';
+			card.style.width = originalRect.width + 'px';
+			card.style.height = originalRect.height + 'px';
+			card.style.margin = '0';
+			card.style.zIndex = '9999';
+			card.style.transition = 'none';
+			card.offsetHeight;
+
+			// Animate card to center
+			card.style.transition = 'top 0.6s ease, left 0.6s ease, width 0.6s ease, height 0.6s ease';
+			card.style.top = targetTop + 'px';
+			card.style.left = targetLeft + 'px';
+			card.style.width = targetWidth + 'px';
+			card.style.height = targetHeight + 'px';
+			card.classList.add('flipped');
+
+			overlay.classList.add('active');
+			document.body.style.overflow = 'hidden';
+
+			// After card is mostly done, FLIP siblings as placeholder collapses
+			setTimeout(function() {
+				var siblings = getSiblings(card);
+				flipSiblings(siblings, function() {
+					placeholder.style.width = '0';
+					placeholder.style.height = '0';
+					placeholder.style.minWidth = '0';
+					placeholder.style.flex = '0 0 0px';
+					placeholder.style.margin = '0';
+					placeholder.style.padding = '0';
+				}, 400);
+				isAnimating = false;
+			}, 400);
+		}
+
+		function closeCard() {
+			if (!activeCard || isAnimating) return;
+			var card = activeCard;
+			isAnimating = true;
+
+			// Fade out back-card content
+			card.querySelectorAll('.speaker-back-left, .speaker-back-right .bio').forEach(function(el) {
+				el.style.transition = 'opacity 0.3s ease';
+				el.style.opacity = '0';
+			});
+
+			overlay.classList.remove('active');
+
+			// FLIP siblings as placeholder restores
+			var siblings = getSiblings(card);
+			flipSiblings(siblings, function() {
+				placeholder.style.width = originalRect.width + 'px';
+				placeholder.style.height = originalRect.height + 'px';
+				placeholder.style.minWidth = '';
+				placeholder.style.flex = 'none';
+				placeholder.style.margin = '';
+				placeholder.style.padding = '';
+			}, 600);
+
+			// After siblings finish shifting, animate card back home
+			setTimeout(function() {
+				if (!card || !placeholder) return;
+				var targetRect = placeholder.getBoundingClientRect();
+
+				card.style.transition = 'top 0.6s ease, left 0.6s ease, width 0.6s ease, height 0.6s ease';
+				card.style.top = targetRect.top + 'px';
+				card.style.left = targetRect.left + 'px';
+				card.style.width = targetRect.width + 'px';
+				card.style.height = targetRect.height + 'px';
+				card.classList.remove('flipped');
+
+				setTimeout(function() {
+					card.removeAttribute('style');
+					card.querySelectorAll('.speaker-back-left, .speaker-back-right .bio').forEach(function(el) {
+						el.removeAttribute('style');
+					});
+					if (placeholder && placeholder.parentNode) {
+						placeholder.parentNode.removeChild(placeholder);
+					}
+					placeholder = null;
+					activeCard = null;
+					originalRect = null;
+					document.body.style.overflow = '';
+					isAnimating = false;
+				}, 600);
+			}, 400);
+		}
+
+		cards.forEach(function(card) {
 			card.addEventListener('click', function(e) {
 				e.stopPropagation();
-				
-				// Create overlay if it doesn't exist
-				if (!overlay) {
-					overlay = document.createElement('div');
-					overlay.className = 'speaker-overlay';
-					document.body.appendChild(overlay);
-					
-					// Close card when clicking overlay or anywhere outside the card
-					overlay.addEventListener('click', function() {
-						if (activeCard) {
-							activeCard.classList.remove('flipped');
-							overlay.classList.remove('active');
-							document.body.style.overflow = '';
-							activeCard = null;
-						}
-					});
-					
-					// Close card when pressing Escape
-					document.addEventListener('keydown', function(e) {
-						if (e.key === 'Escape' && activeCard) {
-							activeCard.classList.remove('flipped');
-							overlay.classList.remove('active');
-							document.body.style.overflow = '';
-							activeCard = null;
-						}
-					});
-				}
-				
-				// Toggle flipped state
-				this.classList.toggle('flipped');
-				
-				// Toggle overlay visibility and prevent scrolling
-				if (this.classList.contains('flipped')) {
-					overlay.classList.add('active');
-					document.body.style.overflow = 'hidden';
-					activeCard = this;
-				} else {
-					overlay.classList.remove('active');
-					document.body.style.overflow = '';
-					activeCard = null;
+				if (activeCard === this) {
+					closeCard();
+				} else if (!activeCard && !isAnimating) {
+					openCard(this);
 				}
 			});
 		});
