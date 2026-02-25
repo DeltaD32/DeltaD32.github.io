@@ -114,6 +114,10 @@
       "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
     },
     {
+      "name": "BCBS SC",
+      "image": "https://www.bmwsupplierxchange.com/images/SC-BlueCross-Blueshield.png"
+    },
+    {
       "name": "JLL",
       "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
     },
@@ -152,6 +156,10 @@
     {
       "name": "SPC",
       "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
+    },
+    {
+      "name": "Synera",
+      "image": "https://www.bmwsupplierxchange.com/images/Synera.png"
     }
   ]
 }
