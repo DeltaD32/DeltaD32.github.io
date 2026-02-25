@@ -42,13 +42,31 @@
       "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
     },
     {
-        "name":"Tajco",
-        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+      "name":"Kluber",
+      "image":"http://deltad32.github.io/images/Kluber.png"
     },
+    {
+      "name":"Nippon",
+      "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
+    },    
+    {
+      "name":"Smith Engineering",
+      "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
+    },
+    {
+      "name":"Steel Summit",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Summit.png"
+    },
+        
     {
       "name":"Steel Tech",
       "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
     },
+    {
+        "name":"Tajco",
+        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+    },
+
     {
         "name":"Trigo",
         "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
