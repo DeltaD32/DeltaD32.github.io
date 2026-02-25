@@ -10,7 +10,15 @@
     },
     {
       "name":"Conmoto",
-      "image":"http://deltad32.github.io/images/Conmoto.png"
+      "image":"http://www.bmwsupplierxchange.com/images/Conmoto.png"
+    },
+    {
+      "name":"Diversified Protection Corporation",
+      "image":"https://www.bmwsupplierxchange.com/images/DPC.png"
+    },
+    {
+      "name": "Partner Academy",
+      "image":"https://www.bmwsupplierxchange.com/images/Partner_Academy.png"
     }
   ],
   "platinum": [
@@ -70,9 +78,29 @@
     }
   ],
   "silver": [
-        {
+    {
       "name":"Kluber",
-      "image":"http://deltad32.github.io/images/Kluber.png"
+      "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
+    },
+    {
+      "name":"Kirchoff",
+      "image":"https://www.bmwsupplierxchange.com/images/Kirchhoff.png"
+    },
+    {
+      "name":"Kuka",
+      "image":"https://www.bmwsupplierxchange.com/images/Kuka.png"
+    },
+    {
+      "name":"Merrimak",
+      "image":"http://www.bmwsupplierxchange.com/images/Merrimak.png"
+    },
+    {
+      "name":"Nucor",
+      "image":"https://www.bmwsupplierxchange.com/images/Nucor.png"
+    },
+    {
+      "name":"P3",
+      "image":"https://www.bmwsupplierxchange.com/images/P3.png"
     }
   ]
 }
