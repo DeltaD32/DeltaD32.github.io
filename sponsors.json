@@ -59,6 +59,15 @@
       "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
     },
     {
+      "name": "Daubert",
+      "image": "https://www.bmwsupplierxchange.com/images/Daubert.png"
+    },
+    {
+      "name": "Eisenmann",
+      "image": "https://www.bmwsupplierxchange.com/images/Eisenmann.png"
+    },
+
+    {
       "name": "Lion Power",
       "image": "https://www.bmwsupplierxchange.com/images/LionPower.png"
     },
@@ -70,7 +79,8 @@
     {
       "name":"Nippon",
       "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
-    },    
+    },   
+
     {
       "name":"Smith Engineering",
       "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
@@ -100,6 +110,14 @@
   ],
   "silver": [
     {
+      "name": "Alloy Group",
+      "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
+    },
+    {
+      "name": "JLL",
+      "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
+    },
+    {
       "name":"Kluber",
       "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
     },
@@ -122,6 +140,18 @@
     {
       "name":"P3",
       "image":"https://www.bmwsupplierxchange.com/images/P3.png"
+    },   
+    {
+      "name": "Progressive Business Solutions",
+      "image": "https://www.bmwsupplierxchange.com/images/ProgressiveBusiness.png"
+    },
+    {
+      "name": "Revolution Trucking",
+      "image": "https://www.bmwsupplierxchange.com/images/RevolutionTrucking.png"
+    },
+    {
+      "name": "SPC",
+      "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
     }
   ]
 }
