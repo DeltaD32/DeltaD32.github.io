@@ -84,6 +84,10 @@
     {
         "name":"Trigo",
         "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+    },
+    {
+      "name": "Yanfeng",
+      "image":"https://www.bmwsupplierxchange.com/images/Yanfeng.png"
     }
   ],
   "silver": [
