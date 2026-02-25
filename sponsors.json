@@ -1,0 +1,38 @@
+{
+  "diamond": [
+    {
+      "name": "ABL",
+      "image": "https://deltad32.github.io/images/iPS.png"
+    },
+    {
+      "name": "BP",
+      "image": "https://deltad32.github.io/images/BP.png"
+    },
+    {
+      "name": "Century 3",
+      "image": "https://deltad32.github.io/images/Century-3%201.png"
+    }
+  ],
+  "platinum": [
+    {
+      "name": "Accenture",
+      "image": "https://deltad32.github.io/images/sponsors/platinum/accenture.png"
+    }
+  ],
+  "gold": [
+    {
+      "name": "Capgemini",
+      "image": "https://deltad32.github.io/images/sponsors/gold/Capgemini.png"
+    },
+    {
+      "name": "Accenture",
+      "image": "https://deltad32.github.io/images/sponsors/gold/accenture.png"
+    }
+  ],
+  "silver": [
+    {
+      "name": "Cold Heading",
+      "image": "https://deltad32.github.io/images/sponsors/silver/Cold-Heading.png"
+    }
+  ]
+}
