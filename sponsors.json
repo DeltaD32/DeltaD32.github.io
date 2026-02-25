@@ -7,16 +7,12 @@
     {
       "name": "BP",
       "image": "https://deltad32.github.io/images/BP.png"
-    },
-    {
-      "name": "Century 3",
-      "image": "https://deltad32.github.io/images/Century-3%201.png"
     }
   ],
   "platinum": [
     {
-      "name": "Accenture",
-      "image": "https://deltad32.github.io/images/sponsors/platinum/accenture.png"
+      "name": "Agile One",
+      "image": "https://deltad32.github.io/images/Agile-one.png"
     }
   ],
   "gold": [
