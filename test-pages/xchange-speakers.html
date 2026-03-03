@@ -1741,6 +1741,64 @@ var hsVars = {
 	font-weight: 600;
 }
 
+/* Session info bar */
+.session-info-bar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	text-align: center;
+	padding: 10px 20px 20px;
+	margin-top: 4px;
+}
+
+.session-info-bar .session-name {
+	font-size: 20px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.session-info-bar .session-org {
+	font-size: 17px;
+	color: #e8e0c8;
+}
+
+.session-info-bar .session-room {
+	font-size: 17px;
+	color: #e8e0c8;
+}
+
+.session-info-bar .session-divider {
+	display: none;
+}
+
+/* Glass group wrapper — no overflow:hidden or backdrop-filter so card animations are unaffected */
+.speaker-group-wrapper {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+	margin-bottom: 50px;
+	padding: 28px 16px 4px;
+}
+
+@media (max-width: 576px) {
+	.session-info-bar {
+		padding: 8px 16px 16px;
+	}
+	.session-info-bar .session-name {
+		font-size: 18px;
+	}
+	.session-info-bar .session-org,
+	.session-info-bar .session-room {
+		font-size: 15px;
+	}
+	.speaker-group-wrapper {
+		padding: 20px 8px 4px;
+		margin-bottom: 32px;
+	}
+}
+
 .speakers-grid {
 	display: flex;
 	flex-wrap: wrap;
@@ -2266,6 +2324,10 @@ var hsVars = {
 						return numA - numB;
 					});
 
+					// Glass wrapper for this pageItem's cards + session info
+					const groupWrapper = document.createElement('div');
+					groupWrapper.className = 'speaker-group-wrapper';
+
 					groups.forEach(groupName => {
 						const speakers = pageItem[groupName];
 						if (!Array.isArray(speakers) || speakers.length === 0) return;
@@ -2298,8 +2360,22 @@ var hsVars = {
 						});
 
 						section.appendChild(grid);
-						container.appendChild(section);
+						groupWrapper.appendChild(section);
 					});
+
+					// Session info bar goes BELOW the cards
+					if (pageItem.Session || pageItem.Organization || pageItem.Room) {
+						const sessionBar = document.createElement('div');
+						sessionBar.className = 'session-info-bar';
+						const parts = [];
+						if (pageItem.Session) parts.push(`<span class="session-name">${pageItem.Session}</span>`);
+						//if (pageItem.Organization) parts.push(`<span class="session-org">${pageItem.Organization}</span>`);
+						if (pageItem.Room) parts.push(`<span class="session-room">Room ${pageItem.Room}</span>`);
+						sessionBar.innerHTML = parts.join('<span class="session-divider"> &bull; </span>');
+						groupWrapper.appendChild(sessionBar);
+					}
+
+					container.appendChild(groupWrapper);
 				});
 			});
 
