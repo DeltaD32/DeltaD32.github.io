@@ -814,6 +814,12 @@ margin-bottom: 0rem;
 ;
 }
 
+@media (max-width: 767px) {
+	.widget_1681825635037 .sr-cover {
+		margin-top: -100px;
+	}
+}
+
 	</style>
 	
 <link rel="stylesheet" href="https://deltad32.github.io/css/module_SR_Offer_Bar_01.min.css">
@@ -1016,7 +1022,14 @@ border-bottom: 0px none #e5e7ea;
 	.widget_1765294162455 .sr-multicol-media .responsive-video {
 		z-index: 10;
 	}
-	@media (max-width: 767px) {
+	@media (max-width: 991px) {
+		.widget_1765294162455 .sr-repeater-2 {
+			text-align: center !important;
+		}
+		.widget_1765294162455 .sr-repeater-2 .responsive-image img {
+			display: block;
+			margin: 0 auto;
+		}
 	}
 	
 	
@@ -2380,7 +2393,7 @@ var hsVars = {
 			});
 
 			const sectionHeading = document.createElement('h3');
-			sectionHeading.textContent = 'Meet our Other Speakers';
+			sectionHeading.textContent = 'Meet our Breakout Speakers';
 			sectionHeading.style.cssText = 'text-align: center; color: #ffffff; padding-top:40px;';
 			region.appendChild(sectionHeading);
 			region.appendChild(container);
