@@ -1860,594 +1860,6 @@ margin-bottom: 0rem;
 </div><!--end row-->
 </div><!--end row-wrapper -->
 
-<!-- Sponsor Logos Section -->
-<style>
-@keyframes sponsorFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.sponsor-logos-wrapper img {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    transition: filter 0.3s ease;
-	width: 150px;
-	height:100px;
-	object-fit: contain;
-	padding: 10px;
-	opacity: 0;
-	transform: scale(0.95);
-}
-
-.sponsor-logos-wrapper img.animate {
-	animation: sponsorFadeIn 0.6s ease-out forwards;
-}
-
-.sponsor-logos-wrapper img:hover {
-    filter: grayscale(0%);
-    -webkit-filter: grayscale(0%);
-}
-
-.sponsor-logos-container {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-}
-.sponsor-logos-container::-webkit-scrollbar {
-	display: none;
-}
-</style>
-
-<div class="row-fluid-wrapper row-depth-1 row-number-13a dnd-section" style="background-color: #f8f9fa; padding: 40px 0;" id="sponsors-container">
-<div class="row-fluid">
-<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
-
-<!-- Sponsors will be dynamically loaded here -->
-<div id="dynamic-sponsors-loading" style="text-align: center; padding: 40px;">
-<p>Loading sponsors...</p>
-</div>
-
-</div><!--end widget-span -->
-</div><!--end row-->
-</div><!--end row-wrapper -->
-<!-- End Sponsor Logos Section -->
-
-<script>
-// Dynamic Sponsor Loading System
-(function() {
-    // Embedded fallback data (will be used if fetch fails)
-    const FALLBACK_SPONSORS_DATA = {
-  "diamond": [
-    {
-      "name": "ABL",
-      "image": "https://www.bmwsupplierxchange.com/images/iPS.png"
-    },
-    {
-      "name": "Benore",
-      "image": "https://www.bmwsupplierxchange.com/images/Benore.png"
-    },
-    {
-      "name":"Conmoto",
-      "image":"http://www.bmwsupplierxchange.com/images/Conmoto.png"
-    },
-    {
-      "name":"Diversified Protection Corporation",
-      "image":"https://www.bmwsupplierxchange.com/images/DPC.png"
-    },
-    {
-      "name": "Partner Academy",
-      "image":"https://www.bmwsupplierxchange.com/images/Partner_Academy.png"
-    }
-  ],
-  "platinum": [
-    {
-      "name": "Agile One",
-      "image": "https://www.bmwsupplierxchange.com/images/Agile-one.png"
-    },
-    {
-      "name": "Carolina Handling",
-      "image": "https://www.bmwsupplierxchange.com/images/CarolinaHandling.png"
-    },
-    {
-      "name": "Evans General Contracting",
-      "image":"https://www.bmwsupplierxchange.com/images/EvansGeneral.png"
-    },
-
-    {
-        "name":"Log Systems",
-        "image":"https://www.bmwsupplierxchange.com/images/LogSystems.png"
-    },
-        {
-        "name":"Korn Systems",
-        "image":"https://www.bmwsupplierxchange.com/images/Korn-Consult-Group.png"
-    },
-    {
-      "name":"Magna",
-      "image":"https://www.bmwsupplierxchange.com/images/Magna-Logo-HR.png"
-    }
-  ],
-  "gold": [
-
-    {
-        "name":"Alpha",
-        "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
-    },
-    {
-      "name":"CPM",
-      "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
-    },
-    {
-      "name": "Daubert",
-      "image": "https://www.bmwsupplierxchange.com/images/Daubert.png"
-    },
-    {
-      "name": "Eisenmann",
-      "image": "https://www.bmwsupplierxchange.com/images/Eisenmann.png"
-    },
-
-    {
-      "name": "Lion Power",
-      "image": "https://www.bmwsupplierxchange.com/images/LionPower.png"
-    },
-    {
-      "name": "Mill Steel Company",
-      "image": "https://www.bmwsupplierxchange.com/images/MillSteel.png"
-    },
-
-    {
-      "name":"Nippon",
-      "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
-    },   
-
-    {
-      "name":"Smith Engineering",
-      "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
-    },
-    {
-      "name":"Steel Summit",
-      "image":"https://www.bmwsupplierxchange.com/images/Steel-Summit.png"
-    },
-        
-    {
-      "name":"Steel Tech",
-      "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
-    },
-    {
-        "name":"Tajco",
-        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
-    },
-
-    {
-        "name":"Trigo",
-        "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
-    },
-    {
-      "name": "Yanfeng",
-      "image":"https://www.bmwsupplierxchange.com/images/Yanfeng.png"
-    }
-  ],
-  "silver": [
-    {
-      "name": "Alloy Group",
-      "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
-    },
-    {
-      "name": "BCBS SC",
-      "image": "https://www.bmwsupplierxchange.com/images/SC-BlueCross-Blueshield.png"
-    },
-    {
-      "name": "JLL",
-      "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
-    },
-    {
-      "name":"Kluber",
-      "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
-    },
-    {
-      "name":"Kirchoff",
-      "image":"https://www.bmwsupplierxchange.com/images/Kirchhoff.png"
-    },
-    {
-      "name":"Kuka",
-      "image":"https://www.bmwsupplierxchange.com/images/Kuka.png"
-    },
-    {
-      "name":"Merrimak",
-      "image":"http://www.bmwsupplierxchange.com/images/Merrimak.png"
-    },
-    {
-      "name":"Nucor",
-      "image":"https://www.bmwsupplierxchange.com/images/Nucor.png"
-    },
-    {
-      "name":"P3",
-      "image":"https://www.bmwsupplierxchange.com/images/P3.png"
-    },   
-    {
-      "name": "Progressive Business Solutions",
-      "image": "https://www.bmwsupplierxchange.com/images/ProgressiveBusiness.png"
-    },
-    {
-      "name": "Revolution Trucking",
-      "image": "https://www.bmwsupplierxchange.com/images/RevolutionTrucking.png"
-    },
-    {
-      "name": "SPC",
-      "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
-    },
-    {
-      "name": "Synera",
-      "image": "https://www.bmwsupplierxchange.com/images/Synera.png"
-    }
-  ]
-}
-;
-    
-    // Configuration - try multiple paths for the JSON file
-    const SPONSORS_JSON_URLS = [
-        'https://deltad32.github.io/sponsors.json',  // Absolute GitHub Pages URL (production)
-        '../sponsors.json',  // Relative path for local testing
-        '/sponsors.json'     // Root absolute path
-    ];
-    
-    const TIER_NAMES = {
-        'diamond': 'Diamond Sponsors',
-        'platinum': 'Platinum Sponsors',
-        'gold': 'Gold Sponsors',
-        'silver': 'Silver Sponsors'
-    };
-    
-    // Try loading from multiple URLs
-    async function fetchSponsorsData() {
-        let lastError = null;
-        
-        for (const url of SPONSORS_JSON_URLS) {
-            try {
-                console.log('Attempting to load sponsors from:', url);
-                const response = await fetch(url);
-                console.log('Fetch response status:', response.status, 'for URL:', url);
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('✅ Successfully loaded sponsors data from:', url);
-                    console.log('Data loaded:', data);
-                    return data;
-                } else {
-                    console.warn('❌ HTTP error', response.status, 'from:', url);
-                }
-            } catch (error) {
-                console.warn('❌ Failed to load from', url, ':', error.message);
-                lastError = error;
-            }
-        }
-        
-        // If all fetch attempts fail, use fallback data
-        console.warn('⚠️ All fetch attempts failed, using embedded fallback data');
-        console.warn('Check if https://deltad32.github.io/sponsors.json is accessible in your browser');
-        return FALLBACK_SPONSORS_DATA;
-    }
-    
-    // Load sponsors from JSON
-    async function loadSponsors() {
-        const container = document.querySelector('#sponsors-container .span12');
-        const loadingDiv = document.getElementById('dynamic-sponsors-loading');
-        
-        if (!container) {
-            console.error('Sponsors container not found');
-            return;
-        }
-        
-        try {
-            // Fetch the sponsors JSON (or use fallback)
-            const sponsorsData = await fetchSponsorsData();
-            
-            console.log('Sponsors data loaded:', sponsorsData);
-            
-            // Remove loading message
-            if (loadingDiv) {
-                loadingDiv.remove();
-            }
-            
-            // Create sponsor sections for each tier
-            const tiers = ['diamond', 'platinum', 'gold', 'silver'];
-            let sponsorsAdded = 0;
-            
-            tiers.forEach(tier => {
-                const sponsors = sponsorsData[tier];
-                
-                // Skip if no sponsors for this tier
-                if (!sponsors || sponsors.length === 0) {
-                    console.log(`No sponsors found for ${tier} tier`);
-                    return;
-                }
-                
-                console.log(`Creating section for ${tier} tier with ${sponsors.length} sponsors`);
-                
-                // Create tier section
-                const tierSection = createTierSection(tier, sponsors);
-                container.appendChild(tierSection);
-                sponsorsAdded++;
-            });
-            
-            console.log(`Total sponsor sections created: ${sponsorsAdded}`);
-            
-            // Initialize scrolling behavior
-            initScrollBehavior();
-            
-            // Set up scroll-triggered animations
-            initScrollRevealAnimations();
-            
-        } catch (error) {
-            console.error('Error loading sponsors:', error);
-            if (loadingDiv) {
-                loadingDiv.innerHTML = `
-                    <p style="color: #999;">Unable to load sponsor information at this time.</p>
-                    <p style="color: #999; font-size: 0.9em;">Error: ${error.message}</p>
-                `;
-            }
-        }
-    }
-    
-    // Create a tier section with sponsors
-    function createTierSection(tier, sponsors) {
-        const section = document.createElement('div');
-        section.className = 'row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section';
-        section.setAttribute('data-sponsor-tier', tier);
-        section.style.marginBottom = '30px';
-        
-        const tierName = TIER_NAMES[tier] || tier.charAt(0).toUpperCase() + tier.slice(1) + ' Sponsors';
-        
-        const sponsorImages = sponsors.map((sponsor, index) => {
-            const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
-            return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy" class="sponsor-logo-item" data-index="${index}">`;
-        }).join('');
-        
-        section.innerHTML = `
-            <div class="row-fluid">
-                <div class="span12 widget-span widget-type-cell" style="text-align: center;">
-                    <h3 style="color: #333; margin-bottom: 20px;">${tierName}</h3>
-                    <div class="sponsor-logos-container" data-sponsor-tier="${tier}">
-                        <div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
-                            ${sponsorImages}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        return section;
-    }
-    
-    // Create sponsor image HTML
-    function createSponsorImage(sponsor, tier) {
-        const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
-        return `<img src="${sponsor.image}" alt="${altText}" style="max-width: 100px; height: auto;" loading="lazy" class="sponsor-logo-item">`;
-    }
-    
-    // Initialize scroll-triggered animations for sponsor logos
-    function initScrollRevealAnimations() {
-        const sponsorImages = document.querySelectorAll('.sponsor-logo-item');
-        
-        if (!sponsorImages.length) {
-            console.warn('No sponsor images found for animation');
-            return;
-        }
-        
-        // Create Intersection Observer to trigger animations on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const index = parseInt(img.getAttribute('data-index'), 10) || 0;
-                    const delayMs = index * 75; // 75ms stagger
-                    
-                    // Delay the animation based on index for stagger effect
-                    setTimeout(() => {
-                        img.classList.add('animate');
-                    }, delayMs);
-                    
-                    // Stop observing this element once animated
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of element is visible
-        });
-        
-        // Observe all sponsor images
-        sponsorImages.forEach(img => {
-            observer.observe(img);
-        });
-    }
-    
-    // Initialize scrolling behavior for overflow
-    function initScrollBehavior() {
-        let activeScrollAnimations = new Map(); // Track active scroll animations
-        
-        function checkSponsorLogoOverflow() {
-            const containers = document.querySelectorAll('.sponsor-logos-container');
-            
-            containers.forEach(container => {
-                const wrapper = container.querySelector('.sponsor-logos-wrapper');
-                if (!wrapper) return;
-                
-                // If we're now on desktop, disable auto-scroll for this container
-                if (window.innerWidth > 768) {
-                    if (activeScrollAnimations.has(container)) {
-                        // Stop scrolling and clean up
-                        activeScrollAnimations.get(container).stop();
-                        activeScrollAnimations.delete(container);
-                    }
-                    // Reset to single copy
-                    const originalHTML = wrapper.getAttribute('data-original-html');
-                    if (originalHTML) {
-                        wrapper.innerHTML = originalHTML;
-                    }
-                    container.style.overflowX = 'visible';
-                    wrapper.style.flexWrap = 'wrap';
-                    return;
-                }
-                
-                // Reset styles to measure natural width
-                container.style.overflowX = '';
-                container.style.whiteSpace = '';
-                wrapper.style.flexWrap = '';
-                wrapper.style.display = 'flex';
-                
-                // Get container and content widths
-                const containerWidth = container.offsetWidth;
-                const wrapperWidth = wrapper.scrollWidth;
-                
-                // If content is wider than container, enable scrolling
-                if (wrapperWidth > containerWidth) {
-                    container.style.overflowX = 'auto';
-                    container.style.whiteSpace = 'nowrap';
-                    container.style.webkitOverflowScrolling = 'touch';
-                    container.style.padding = '20px 0';
-                    wrapper.style.flexWrap = 'nowrap';
-                    wrapper.style.display = 'inline-flex';
-                    wrapper.style.padding = '0 20px';
-                    
-                    // Make images inline-block for scrolling
-                    const images = wrapper.querySelectorAll('img');
-                    images.forEach(img => {
-                        img.style.display = 'inline-block';
-                    });
-                    
-                    // Initialize auto-scrolling animation if not already active
-                    if (!activeScrollAnimations.has(container)) {
-                        initAutoScroll(container, wrapper, activeScrollAnimations);
-                    }
-                } else {
-                    // Keep centered layout if content fits
-                    container.style.overflowX = 'visible';
-                    wrapper.style.flexWrap = 'wrap';
-                }
-            });
-        }
-        
-        // Initialize auto-scroll animation for mobile/narrow views
-        function initAutoScroll(container, wrapper, activeScrollAnimations) {
-            // Only auto-scroll on narrow screens
-            if (window.innerWidth > 768) {
-                return;
-            }
-            
-            // Store original HTML on first scroll setup
-            if (!wrapper.getAttribute('data-original-html')) {
-                wrapper.setAttribute('data-original-html', wrapper.innerHTML);
-            }
-            
-            // Clone all items for infinite scroll effect
-            const originalHTML = wrapper.getAttribute('data-original-html');
-            
-            // Duplicate the items to create seamless infinite scroll
-            wrapper.innerHTML = originalHTML + originalHTML;
-            
-            const images = wrapper.querySelectorAll('img');
-            let oneSetWidth = 0;
-            const totalImages = images.length / 2; // Half are duplicates
-            let scrollPosition = 0;
-            let isScrolling = true; // Start scrolling immediately
-            const scrollSpeed = 0.3; // pixels per frame (slower)
-            let animationId = null;
-            
-            // Calculate initial width with a small delay to allow rendering
-            setTimeout(() => {
-                // Calculate the width of one set of items
-                oneSetWidth = 0;
-                for (let i = 0; i < totalImages; i++) {
-                    oneSetWidth += images[i].offsetWidth + 30; // 30px for gap
-                }
-            }, 100);
-            
-            // Create a continuous scroll animation
-            function autoScrollFrame() {
-                if (!isScrolling) {
-                    return;
-                }
-                
-                scrollPosition += scrollSpeed;
-                
-                // Reset to beginning seamlessly when we reach one full set
-                if (oneSetWidth > 0 && scrollPosition >= oneSetWidth) {
-                    scrollPosition = 0;
-                }
-                
-                container.scrollLeft = scrollPosition;
-                animationId = requestAnimationFrame(autoScrollFrame);
-            }
-            
-            // Start animation immediately
-            animationId = requestAnimationFrame(autoScrollFrame);
-            
-            // Pause on hover
-            container.addEventListener('mouseenter', () => {
-                isScrolling = false;
-            });
-            
-            // Resume on mouse leave
-            container.addEventListener('mouseleave', () => {
-                isScrolling = true;
-            });
-            
-            // Pause on touch
-            container.addEventListener('touchstart', () => {
-                isScrolling = false;
-            });
-            
-            container.addEventListener('touchend', () => {
-                // Resume scrolling after a delay if user didn't manually scroll
-                setTimeout(() => {
-                    isScrolling = true;
-                }, 500);
-            });
-            
-            // Store stop function for cleanup
-            activeScrollAnimations.set(container, {
-                stop: () => {
-                    isScrolling = false;
-                    if (animationId) {
-                        cancelAnimationFrame(animationId);
-                    }
-                }
-            });
-        }
-        
-        // Initial check
-        checkSponsorLogoOverflow();
-        
-        // Recheck on window resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(checkSponsorLogoOverflow, 250);
-        });
-        
-        // Recheck when images load
-        const sponsorImages = document.querySelectorAll('.sponsor-logos-wrapper img');
-        sponsorImages.forEach(img => {
-            if (!img.complete) {
-                img.addEventListener('load', checkSponsorLogoOverflow);
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                });
-            }
-        });
-    }
-    
-    // Start loading when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadSponsors);
-    } else {
-        loadSponsors();
-    }
-})();
-</script>
 
 <div class="row-fluid-wrapper row-depth-1 row-number-14 dnd-section">
 <div class="row-fluid ">
@@ -3667,6 +3079,612 @@ margin-bottom: 0rem;
 </div><!--end row-->
 </div><!--end row-wrapper -->
 
+<!-- Sponsor Logos Section -->
+<style>
+@keyframes sponsorFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.sponsor-logos-wrapper img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    transition: filter 0.3s ease;
+	width: 150px;
+	height:100px;
+	object-fit: contain;
+	padding: 10px;
+	opacity: 0;
+	transform: scale(0.95);
+}
+
+.sponsor-logos-wrapper img.animate {
+	animation: sponsorFadeIn 0.6s ease-out forwards;
+}
+
+.sponsor-logos-wrapper img:hover {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+
+.sponsor-logos-container {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.sponsor-logos-container::-webkit-scrollbar {
+	display: none;
+}
+</style>
+
+<div class="row-fluid-wrapper row-depth-1 row-number-13a dnd-section" style="background-color: #f8f9fa; padding: 40px 0;" id="sponsors-container">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<!-- Sponsors will be dynamically loaded here -->
+<div id="dynamic-sponsors-loading" style="text-align: center; padding: 40px;">
+<div class="spinner" style="margin: 0 auto 15px; width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #003D78; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+<p style="color: #666; font-size: 16px;">Loading sponsors...</p>
+</div>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+<!-- End Sponsor Logos Section -->
+
+<script>
+// Dynamic Sponsor Loading System
+(function() {
+    // Embedded fallback data (will be used if fetch fails)
+    const FALLBACK_SPONSORS_DATA = {
+  "diamond": [
+    {
+      "name": "ABL",
+      "image": "https://www.bmwsupplierxchange.com/images/iPS.png"
+    },
+    {
+      "name": "Benore",
+      "image": "https://www.bmwsupplierxchange.com/images/Benore.png"
+    },
+    {
+      "name":"Conmoto",
+      "image":"http://www.bmwsupplierxchange.com/images/Conmoto.png"
+    },
+    {
+      "name":"Diversified Protection Corporation",
+      "image":"https://www.bmwsupplierxchange.com/images/DPC.png"
+    },
+    {
+      "name": "Partner Academy",
+      "image":"https://www.bmwsupplierxchange.com/images/Partner_Academy.png"
+    }
+  ],
+  "platinum": [
+    {
+      "name": "Agile One",
+      "image": "https://www.bmwsupplierxchange.com/images/Agile-one.png"
+    },
+    {
+      "name": "Carolina Handling",
+      "image": "https://www.bmwsupplierxchange.com/images/CarolinaHandling.png"
+    },
+    {
+      "name": "Evans General Contracting",
+      "image":"https://www.bmwsupplierxchange.com/images/EvansGeneral.png"
+    },
+
+    {
+        "name":"Log Systems",
+        "image":"https://www.bmwsupplierxchange.com/images/LogSystems.png"
+    },
+        {
+        "name":"Korn Systems",
+        "image":"https://www.bmwsupplierxchange.com/images/Korn-Consult-Group.png"
+    },
+    {
+      "name":"Magna",
+      "image":"https://www.bmwsupplierxchange.com/images/Magna-Logo-HR.png"
+    }
+  ],
+  "gold": [
+
+    {
+        "name":"Alpha",
+        "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
+    },
+    {
+      "name":"CPM",
+      "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
+    },
+    {
+      "name": "Daubert",
+      "image": "https://www.bmwsupplierxchange.com/images/Daubert.png"
+    },
+    {
+      "name": "Eisenmann",
+      "image": "https://www.bmwsupplierxchange.com/images/Eisenmann.png"
+    },
+
+    {
+      "name": "Lion Power",
+      "image": "https://www.bmwsupplierxchange.com/images/LionPower.png"
+    },
+    {
+      "name": "Mill Steel Company",
+      "image": "https://www.bmwsupplierxchange.com/images/MillSteel.png"
+    },
+
+    {
+      "name":"Nippon",
+      "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
+    },   
+
+    {
+      "name":"Smith Engineering",
+      "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
+    },
+    {
+      "name":"Steel Summit",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Summit.png"
+    },
+        
+    {
+      "name":"Steel Tech",
+      "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
+    },
+    {
+        "name":"Tajco",
+        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+    },
+
+    {
+        "name":"Trigo",
+        "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+    },
+    {
+      "name": "Yanfeng",
+      "image":"https://www.bmwsupplierxchange.com/images/Yanfeng.png"
+    }
+  ],
+  "silver": [
+    {
+      "name": "Alloy Group",
+      "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
+    },
+    {
+      "name": "BCBS SC",
+      "image": "https://www.bmwsupplierxchange.com/images/SC-BlueCross-Blueshield.png"
+    },
+    {
+      "name": "JLL",
+      "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
+    },
+    {
+      "name":"Kluber",
+      "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
+    },
+    {
+      "name":"Kirchoff",
+      "image":"https://www.bmwsupplierxchange.com/images/Kirchhoff.png"
+    },
+    {
+      "name":"Kuka",
+      "image":"https://www.bmwsupplierxchange.com/images/Kuka.png"
+    },
+    {
+      "name":"Merrimak",
+      "image":"http://www.bmwsupplierxchange.com/images/Merrimak.png"
+    },
+    {
+      "name":"Nucor",
+      "image":"https://www.bmwsupplierxchange.com/images/Nucor.png"
+    },
+    {
+      "name":"P3",
+      "image":"https://www.bmwsupplierxchange.com/images/P3.png"
+    },   
+    {
+      "name": "Progressive Business Solutions",
+      "image": "https://www.bmwsupplierxchange.com/images/ProgressiveBusiness.png"
+    },
+    {
+      "name": "Revolution Trucking",
+      "image": "https://www.bmwsupplierxchange.com/images/RevolutionTrucking.png"
+    },
+    {
+      "name": "SPC",
+      "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
+    },
+    {
+      "name": "Synera",
+      "image": "https://www.bmwsupplierxchange.com/images/Synera.png"
+    }
+  ]
+}
+;
+    
+    // Configuration - try multiple paths for the JSON file
+    const SPONSORS_JSON_URLS = [
+        'https://deltad32.github.io/sponsors.json',  // Absolute GitHub Pages URL (production)
+        '../sponsors.json',  // Relative path for local testing
+        '/sponsors.json'     // Root absolute path
+    ];
+    
+    const TIER_NAMES = {
+        'diamond': 'Diamond Sponsors',
+        'platinum': 'Platinum Sponsors',
+        'gold': 'Gold Sponsors',
+        'silver': 'Silver Sponsors'
+    };
+    
+    const TIER_LOGO_SIZES = {
+        'diamond': { height: '120px', maxWidth: '300px' },
+        'platinum': { height: '100px', maxWidth: '200px' },
+        'gold': { height: '80px', maxWidth: '120px' },
+        'silver': { height: '70px', maxWidth: '100px' }
+    };
+    
+    // Try loading from multiple URLs
+    async function fetchSponsorsData() {
+        let lastError = null;
+        
+        for (const url of SPONSORS_JSON_URLS) {
+            try {
+                console.log('Attempting to load sponsors from:', url);
+                const response = await fetch(url);
+                console.log('Fetch response status:', response.status, 'for URL:', url);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('✅ Successfully loaded sponsors data from:', url);
+                    console.log('Data loaded:', data);
+                    return data;
+                } else {
+                    console.warn('❌ HTTP error', response.status, 'from:', url);
+                }
+            } catch (error) {
+                console.warn('❌ Failed to load from', url, ':', error.message);
+                lastError = error;
+            }
+        }
+        
+        // If all fetch attempts fail, use fallback data
+        console.warn('⚠️ All fetch attempts failed, using embedded fallback data');
+        console.warn('Check if https://deltad32.github.io/sponsors.json is accessible in your browser');
+        return FALLBACK_SPONSORS_DATA;
+    }
+    
+    // Load sponsors from JSON
+    async function loadSponsors() {
+        const container = document.querySelector('#sponsors-container .span12');
+        const loadingDiv = document.getElementById('dynamic-sponsors-loading');
+        
+        if (!container) {
+            console.error('Sponsors container not found');
+            return;
+        }
+        
+        try {
+            // Fetch the sponsors JSON (or use fallback)
+            const sponsorsData = await fetchSponsorsData();
+            
+            console.log('Sponsors data loaded:', sponsorsData);
+            
+            // Remove loading message
+            if (loadingDiv) {
+                loadingDiv.remove();
+            }
+            
+            // Create sponsor sections for each tier
+            const tiers = ['diamond', 'platinum', 'gold', 'silver'];
+            let sponsorsAdded = 0;
+            
+            tiers.forEach(tier => {
+                const sponsors = sponsorsData[tier];
+                
+                // Skip if no sponsors for this tier
+                if (!sponsors || sponsors.length === 0) {
+                    console.log(`No sponsors found for ${tier} tier`);
+                    return;
+                }
+                
+                console.log(`Creating section for ${tier} tier with ${sponsors.length} sponsors`);
+                
+                // Create tier section
+                const tierSection = createTierSection(tier, sponsors);
+                container.appendChild(tierSection);
+                sponsorsAdded++;
+            });
+            
+            console.log(`Total sponsor sections created: ${sponsorsAdded}`);
+            
+            // Initialize scrolling behavior
+            initScrollBehavior();
+            
+            // Set up scroll-triggered animations
+            initScrollRevealAnimations();
+            
+        } catch (error) {
+            console.error('Error loading sponsors:', error);
+            if (loadingDiv) {
+                loadingDiv.innerHTML = `
+                    <p style="color: #999;">Unable to load sponsor information at this time.</p>
+                    <p style="color: #999; font-size: 0.9em;">Error: ${error.message}</p>
+                `;
+            }
+        }
+    }
+    
+    // Create a tier section with sponsors
+    function createTierSection(tier, sponsors) {
+        const section = document.createElement('div');
+        section.className = 'row-fluid-wrapper row-depth-1 dnd-row sponsor-tier-section';
+        section.setAttribute('data-sponsor-tier', tier);
+        section.style.marginBottom = '30px';
+        
+        const tierName = TIER_NAMES[tier] || tier.charAt(0).toUpperCase() + tier.slice(1) + ' Sponsors';
+        const logoSize = TIER_LOGO_SIZES[tier] || { height: '70px', maxWidth: '175px' };
+        
+        const sponsorImages = sponsors.map((sponsor, index) => {
+            const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
+            return `<img src="${sponsor.image}" alt="${altText}" style="height: ${logoSize.height}; max-width: ${logoSize.maxWidth}; width: auto; object-fit: contain;" loading="lazy" class="sponsor-logo-item" data-index="${index}">`;
+        }).join('');
+        
+        section.innerHTML = `
+            <div class="row-fluid">
+                <div class="span12 widget-span widget-type-cell" style="text-align: center;">
+                    <h3 style="color: #333; margin-bottom: 20px;">${tierName}</h3>
+                    <div class="sponsor-logos-container" data-sponsor-tier="${tier}">
+                        <div class="sponsor-logos-wrapper" style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
+                            ${sponsorImages}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        return section;
+    }
+    
+    // Create sponsor image HTML
+    function createSponsorImage(sponsor, tier) {
+        const logoSize = TIER_LOGO_SIZES[tier] || { height: '70px', maxWidth: '175px' };
+        const altText = `${sponsor.name} - ${tier.charAt(0).toUpperCase() + tier.slice(1)} Sponsor`;
+        return `<img src="${sponsor.image}" alt="${altText}" style="height: ${logoSize.height}; max-width: ${logoSize.maxWidth}; width: auto; object-fit: contain;" loading="lazy" class="sponsor-logo-item">`;
+    }
+    
+    // Initialize scroll-triggered animations for sponsor logos
+    function initScrollRevealAnimations() {
+        const sponsorImages = document.querySelectorAll('.sponsor-logo-item');
+        
+        if (!sponsorImages.length) {
+            console.warn('No sponsor images found for animation');
+            return;
+        }
+        
+        // Create Intersection Observer to trigger animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const index = parseInt(img.getAttribute('data-index'), 10) || 0;
+                    const delayMs = index * 75; // 75ms stagger
+                    
+                    // Delay the animation based on index for stagger effect
+                    setTimeout(() => {
+                        img.classList.add('animate');
+                    }, delayMs);
+                    
+                    // Stop observing this element once animated
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of element is visible
+        });
+        
+        // Observe all sponsor images
+        sponsorImages.forEach(img => {
+            observer.observe(img);
+        });
+    }
+    
+    // Initialize scrolling behavior for overflow
+    function initScrollBehavior() {
+        let activeScrollAnimations = new Map(); // Track active scroll animations
+        
+        function checkSponsorLogoOverflow() {
+            const containers = document.querySelectorAll('.sponsor-logos-container');
+            
+            containers.forEach(container => {
+                const wrapper = container.querySelector('.sponsor-logos-wrapper');
+                if (!wrapper) return;
+                
+                // If we're now on desktop, disable auto-scroll for this container
+                if (window.innerWidth > 768) {
+                    if (activeScrollAnimations.has(container)) {
+                        // Stop scrolling and clean up
+                        activeScrollAnimations.get(container).stop();
+                        activeScrollAnimations.delete(container);
+                    }
+                    // Reset to single copy
+                    const originalHTML = wrapper.getAttribute('data-original-html');
+                    if (originalHTML) {
+                        wrapper.innerHTML = originalHTML;
+                    }
+                    container.style.overflowX = 'visible';
+                    wrapper.style.flexWrap = 'wrap';
+                    return;
+                }
+                
+                // Reset styles to measure natural width
+                container.style.overflowX = '';
+                container.style.whiteSpace = '';
+                wrapper.style.flexWrap = '';
+                wrapper.style.display = 'flex';
+                
+                // Get container and content widths
+                const containerWidth = container.offsetWidth;
+                const wrapperWidth = wrapper.scrollWidth;
+                
+                // If content is wider than container, enable scrolling
+                if (wrapperWidth > containerWidth) {
+                    container.style.overflowX = 'auto';
+                    container.style.whiteSpace = 'nowrap';
+                    container.style.webkitOverflowScrolling = 'touch';
+                    container.style.padding = '20px 0';
+                    wrapper.style.flexWrap = 'nowrap';
+                    wrapper.style.display = 'inline-flex';
+                    wrapper.style.padding = '0 20px';
+                    
+                    // Make images inline-block for scrolling
+                    const images = wrapper.querySelectorAll('img');
+                    images.forEach(img => {
+                        img.style.display = 'inline-block';
+                    });
+                    
+                    // Initialize auto-scrolling animation if not already active
+                    if (!activeScrollAnimations.has(container)) {
+                        initAutoScroll(container, wrapper, activeScrollAnimations);
+                    }
+                } else {
+                    // Keep centered layout if content fits
+                    container.style.overflowX = 'visible';
+                    wrapper.style.flexWrap = 'wrap';
+                }
+            });
+        }
+        
+        // Initialize auto-scroll animation for mobile/narrow views
+        function initAutoScroll(container, wrapper, activeScrollAnimations) {
+            // Only auto-scroll on narrow screens
+            if (window.innerWidth > 768) {
+                return;
+            }
+            
+            // Store original HTML on first scroll setup
+            if (!wrapper.getAttribute('data-original-html')) {
+                wrapper.setAttribute('data-original-html', wrapper.innerHTML);
+            }
+            
+            // Clone all items for infinite scroll effect
+            const originalHTML = wrapper.getAttribute('data-original-html');
+            
+            // Duplicate the items to create seamless infinite scroll
+            wrapper.innerHTML = originalHTML + originalHTML;
+            
+            const images = wrapper.querySelectorAll('img');
+            let oneSetWidth = 0;
+            const totalImages = images.length / 2; // Half are duplicates
+            let scrollPosition = 0;
+            let isScrolling = true; // Start scrolling immediately
+            const scrollSpeed = 0.3; // pixels per frame (slower)
+            let animationId = null;
+            
+            // Calculate initial width with a small delay to allow rendering
+            setTimeout(() => {
+                // Calculate the width of one set of items
+                oneSetWidth = 0;
+                for (let i = 0; i < totalImages; i++) {
+                    oneSetWidth += images[i].offsetWidth + 30; // 30px for gap
+                }
+            }, 100);
+            
+            // Create a continuous scroll animation
+            function autoScrollFrame() {
+                if (!isScrolling) {
+                    return;
+                }
+                
+                scrollPosition += scrollSpeed;
+                
+                // Reset to beginning seamlessly when we reach one full set
+                if (oneSetWidth > 0 && scrollPosition >= oneSetWidth) {
+                    scrollPosition = 0;
+                }
+                
+                container.scrollLeft = scrollPosition;
+                animationId = requestAnimationFrame(autoScrollFrame);
+            }
+            
+            // Start animation immediately
+            animationId = requestAnimationFrame(autoScrollFrame);
+            
+            // Pause on hover
+            container.addEventListener('mouseenter', () => {
+                isScrolling = false;
+            });
+            
+            // Resume on mouse leave
+            container.addEventListener('mouseleave', () => {
+                isScrolling = true;
+            });
+            
+            // Pause on touch
+            container.addEventListener('touchstart', () => {
+                isScrolling = false;
+            });
+            
+            container.addEventListener('touchend', () => {
+                // Resume scrolling after a delay if user didn't manually scroll
+                setTimeout(() => {
+                    isScrolling = true;
+                }, 500);
+            });
+            
+            // Store stop function for cleanup
+            activeScrollAnimations.set(container, {
+                stop: () => {
+                    isScrolling = false;
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                }
+            });
+        }
+        
+        // Initial check
+        checkSponsorLogoOverflow();
+        
+        // Recheck on window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(checkSponsorLogoOverflow, 250);
+        });
+        
+        // Recheck when images load
+        const sponsorImages = document.querySelectorAll('.sponsor-logos-wrapper img');
+        sponsorImages.forEach(img => {
+            if (!img.complete) {
+                img.addEventListener('load', checkSponsorLogoOverflow);
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                });
+            }
+        });
+    }
+    
+    // Start loading when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadSponsors);
+    } else {
+        loadSponsors();
+    }
+})();
+</script>
+
 <div class="row-fluid-wrapper row-depth-1 row-number-17 dnd-row">
 <div class="row-fluid ">
 <div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
@@ -3869,7 +3887,7 @@ margin-bottom: 0rem;
 		
 
 		
-<script src="https://js.hs-banner.com/v2/23587415/banner.js" type="text/javascript" id="cookieBanner-23587415" data-cookieconsent="ignore" data-hs-ignore="true" data-loader="hs-scriptloader" data-hsjs-portal="23587415" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="https://js.hscollectedforms.net/collectedforms.js" type="text/javascript" id="CollectedForms-23587415" crossorigin="anonymous" data-leadin-portal-id="23587415" data-leadin-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="23587415" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="https://js.hs-analytics.net/analytics/1769623200000/23587415.js" type="text/javascript" id="hs-analytics"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 <script defer="" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <script src="https://stats.sprocketrocket.co/js/analytics.js" crossorigin="anonymous"></script>
