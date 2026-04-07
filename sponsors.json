@@ -36,15 +36,23 @@
   "platinum": [
     {
       "name": "Agile One",
-      "image": "/images/Agile-one.png"
+      "image": "/images/sponsors/2_Platinum/AgileOne/Agile-One.png"
+    },
+    {
+      "name": "BASF",
+      "image": "/images/sponsors/2_Platinum/BASF/BASF.png"
     },
     {
       "name": "Carolina Handling",
       "image": "/images/CarolinaHandling.png"
     },
     {
+      "name":"DH Griffin",
+      "immage":"/images/sponsors/2_Platinum/DHGriffin/DHG.png"
+    },
+    {
       "name": "Evans General Contracting",
-      "image":"/images/EvansGeneral.png"
+      "image":"/images/sponsors/2_Platinum/EvansGeneral/Evans.png"
     },
 
     {
@@ -57,37 +65,47 @@
     },
     {
       "name":"Magna",
-      "image":"/images/Magna-Logo-HR.png"
+      "image":"/images/sponsors/2_Platinum/Magna/Magna-CMYK.jpg"
     }
   ],
   "gold": [
 
     {
         "name":"Alpha",
-        "image":"/images/Alpha.png"
+        "image":"/images/sponsors/3_Gold/Alpha Industry/ALPHA.png"
+    },
+    {
+      "name":"Clean Tech",
+      "image":"/images/sponsors/3_Gold/CleanTech/CLEAN_TECH.png"
     },
     {
       "name":"CPM",
-      "image":"/images/CPM.png"
+      "image":"/images/sponsors/3_Gold/CPM/CPM_Logo.png"
     },
     {
       "name": "Daubert",
-      "image": "/images/Daubert.png"
+      "image": "/images/sponsors/3_Gold/DaubertChemical/Daubert_CCI.png"
     },
     {
       "name": "Eisenmann",
-      "image": "/images/Eisenmann.png"
+      "image": "/images/sponsors/3_Gold/Eisenmann/Eisenmann_Logo.jpg"
     },
-
+    {
+      "name":"GW",
+      "image":"/images/sponsors/3_Gold/GW/GWEquip_Logo.png"
+    },
+    {
+      "name": "King Automation",
+      "image": "/images/sponsors/3_Gold/KingAutomation/KING_LOGO.png"
+    },
     {
       "name": "Lion Power",
-      "image": "/images/LionPower.png"
+      "image": "/images/sponsors/3_Gold/LionPower/LionPower_Logo.png"
     },
     {
       "name": "Mill Steel Company",
-      "image": "/images/MillSteel.png"
+      "image": "/images/sponsors/3_Gold/MillSteel/Mill_Steel.png"
     },
-
     {
       "name":"Nippon",
       "image":"/images/Nippon-Express.png"
@@ -95,7 +113,7 @@
 
     {
       "name":"Smith Engineering",
-      "image":"/images/Smith-Engineering.png"
+      "image":"/images/sponsors/3_Gold/SmithEngineering/Smith_Engineering_Logo.png"
     },
     {
       "name":"Steel Summit",
@@ -104,7 +122,7 @@
         
     {
       "name":"Steel Tech",
-      "image":"/images/Steel-Tech.png"
+      "image":"/images/sponsors/3_Gold/SteelTech/steeltech_logo_tech_inline_titanium.png"
     },
     {
         "name":"Tajco",
@@ -118,32 +136,52 @@
     {
       "name": "Yanfeng",
       "image":"/images/Yanfeng.png"
+    },
+    {
+      "name":"Zeltwanger",
+      "image":"/images/sponsors/3_Gold/Zeltwanger/ZELTWANGER.png"
     }
   ],
   "silver": [
     {
+      "name":"AEW",
+      "image":"/images/sponsor/4_Silver/AEW/AEW_LOGO.jpg"
+    },
+    {
       "name": "Alloy Group",
-      "image": "/images/Alloy.png"
+      "image": "/images/sponsors/4_Silver/Alloy/Alloy_Logo.png"
     },
     {
       "name": "BCBS SC",
-      "image": "/images/SC-BlueCross-Blueshield.png"
+      "image": "/images/sponsors/4_Silver/BCBS/BCBS.png"
+    },
+    {
+      "name":"Bosch",
+      "image":"/images/sponsors/4_Silver/Bosch/Bosch_logo_red.png"
+    },
+    {
+      "name":"ChemTreat",
+      "image":"/images/sponsors/4_Silver/ChemTreat/ChemTreat.png"
     },
     {
       "name": "JLL",
-      "image": "/images/JLL.png"
+      "image": "/images/sponsors/4_Silver/JLL/JLL_Logo.png"
     },
     {
       "name":"Kluber",
-      "image":"/images/Kluber.png"
+      "image":"/images/sponsors/4_Silver/Kluber/kluber.png"
     },
     {
       "name":"Kirchoff",
-      "image":"/images/Kirchhoff.png"
+      "image":"/images/sponsors/4_Silver/Kirchoff/Kirchhoff.png"
     },
     {
       "name":"Kuka",
-      "image":"/images/Kuka.png"
+      "image":"/images/sponsors/4_Silver/Kuka/KUKA.png"
+    },
+    {
+      "name":"Maswer",
+      "image":"/images/sponsors/4_Silver/Maswer/maswer_logo.png"
     },
     {
       "name":"Merrimak",
@@ -151,31 +189,31 @@
     },
     {
       "name":"Nucor",
-      "image":"/images/Nucor.png"
+      "image":"/images/sponsors/4_Silver/Nucor/Nucor.png"
     },
     {
       "name":"P3",
-      "image":"/images/P3.png"
+      "image":"/images/sponsors/4_Silver/P3/P3.png"
     },   
     {
       "name": "Progressive Business Solutions",
-      "image": "/images/ProgressiveBusiness.png"
+      "image": "/images/sponsors/4_Silver/ProgressiveBusiness/Progressive.png"
     },
     {
       "name": "Revolution Trucking",
       "image": "/images/RevolutionTrucking.png"
     },
     {
-      "name": "SPC",
-      "image": "/images/SPC.jpeg"
+      "name":"Software Projects Consulting",
+      "image":"/images/sponsors/4_Silver/SoftwareProjectsConsulting/SPC_Logo.png"
     },
     {
       "name":"Starline",
       "image":"/images/Starline.png"
     },
     {
-      "name": "Synera",
-      "image": "/images/Synera.png"
+      "name": "SyneraTech",
+      "image": "/images/sponsors/4_Silver/SyneraTech/Synera_Logo.png"
     }
   ]
 }
