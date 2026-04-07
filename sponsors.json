@@ -2,176 +2,180 @@
   "diamond": [
     {
       "name": "ABL",
-      "image": "https://www.bmwsupplierxchange.com/images/iPS.png"
+      "image": "/images/sponsors/1_Diamond/IPS/IPS.png"
     },
     {
       "name": "Benore",
-      "image": "https://www.bmwsupplierxchange.com/images/Benore.png"
+      "image": "/images/Benore.png"
     },
     {
       "name":"Conmoto",
-      "image":"http://www.bmwsupplierxchange.com/images/Conmoto.png"
+      "image":"/images/Conmoto.png"
     },
     {
       "name":"Diversified Protection Corporation",
-      "image":"https://www.bmwsupplierxchange.com/images/DPC.png"
+      "image":"/images/DPC.png"
+    },
+    {
+      "name":"IPS",
+      "image":"/images/sponsors/1_Diamond/IPS/IPS.png"
     },
     {
       "name":"MAU",
-      "image":"https://www.bmwsupplierxchange.com/images/MAU.png"
+      "image":"./images/sponsors/1_Diamond/MAU/MAU_Logo_Primary.png"
     },
     {
       "name":"Milagro Concept",
-      "image":"https://www.bmwsupplierxchange.com/images/Milagro.png"
+      "image":"/images/Milagro.png"
     },
     {
       "name": "Partner Academy",
-      "image":"https://www.bmwsupplierxchange.com/images/Partner_Academy.png"
+      "image":"/images/Partner_Academy.png"
     }
   ],
   "platinum": [
     {
       "name": "Agile One",
-      "image": "https://www.bmwsupplierxchange.com/images/Agile-one.png"
+      "image": "/images/Agile-one.png"
     },
     {
       "name": "Carolina Handling",
-      "image": "https://www.bmwsupplierxchange.com/images/CarolinaHandling.png"
+      "image": "/images/CarolinaHandling.png"
     },
     {
       "name": "Evans General Contracting",
-      "image":"https://www.bmwsupplierxchange.com/images/EvansGeneral.png"
+      "image":"/images/EvansGeneral.png"
     },
 
     {
         "name":"Log Systems",
-        "image":"https://www.bmwsupplierxchange.com/images/LogSystems.png"
+        "image":"/images/LogSystems.png"
     },
         {
         "name":"Korn Systems",
-        "image":"https://www.bmwsupplierxchange.com/images/Korn-Consult-Group.png"
+        "image":"/images/Korn-Consult-Group.png"
     },
     {
       "name":"Magna",
-      "image":"https://www.bmwsupplierxchange.com/images/Magna-Logo-HR.png"
+      "image":"/images/Magna-Logo-HR.png"
     }
   ],
   "gold": [
 
     {
         "name":"Alpha",
-        "image":"https://www.bmwsupplierxchange.com/images/Alpha.png"
+        "image":"/images/Alpha.png"
     },
     {
       "name":"CPM",
-      "image":"https://www.bmwsupplierxchange.com/images/CPM.png"
+      "image":"/images/CPM.png"
     },
     {
       "name": "Daubert",
-      "image": "https://www.bmwsupplierxchange.com/images/Daubert.png"
+      "image": "/images/Daubert.png"
     },
     {
       "name": "Eisenmann",
-      "image": "https://www.bmwsupplierxchange.com/images/Eisenmann.png"
+      "image": "/images/Eisenmann.png"
     },
 
     {
       "name": "Lion Power",
-      "image": "https://www.bmwsupplierxchange.com/images/LionPower.png"
+      "image": "/images/LionPower.png"
     },
     {
       "name": "Mill Steel Company",
-      "image": "https://www.bmwsupplierxchange.com/images/MillSteel.png"
+      "image": "/images/MillSteel.png"
     },
 
     {
       "name":"Nippon",
-      "image":"https://www.bmwsupplierxchange.com/images/Nippon-Express.png"
+      "image":"/images/Nippon-Express.png"
     },   
 
     {
       "name":"Smith Engineering",
-      "image":"https://www.bmwsupplierxchange.com/images/Smith-Engineering.png"
+      "image":"/images/Smith-Engineering.png"
     },
     {
       "name":"Steel Summit",
-      "image":"https://www.bmwsupplierxchange.com/images/Steel-Summit.png"
+      "image":"/images/Steel-Summit.png"
     },
         
     {
       "name":"Steel Tech",
-      "image":"https://www.bmwsupplierxchange.com/images/Steel-Tech.png"
+      "image":"/images/Steel-Tech.png"
     },
     {
         "name":"Tajco",
-        "image":"https://www.bmwsupplierxchange.com/images/TAJCO.png"
+        "image":"/images/TAJCO.png"
     },
 
     {
         "name":"Trigo",
-        "image":"https://www.bmwsupplierxchange.com/images/Trigo.png"
+        "image":"/images/Trigo.png"
     },
     {
       "name": "Yanfeng",
-      "image":"https://www.bmwsupplierxchange.com/images/Yanfeng.png"
+      "image":"/images/Yanfeng.png"
     }
   ],
   "silver": [
     {
       "name": "Alloy Group",
-      "image": "https://www.bmwsupplierxchange.com/images/Alloy.png"
+      "image": "/images/Alloy.png"
     },
     {
       "name": "BCBS SC",
-      "image": "https://www.bmwsupplierxchange.com/images/SC-BlueCross-Blueshield.png"
+      "image": "/images/SC-BlueCross-Blueshield.png"
     },
     {
       "name": "JLL",
-      "image": "https://www.bmwsupplierxchange.com/images/JLL.png"
+      "image": "/images/JLL.png"
     },
     {
       "name":"Kluber",
-      "image":"https://www.bmwsupplierxchange.com/images/Kluber.png"
+      "image":"/images/Kluber.png"
     },
     {
       "name":"Kirchoff",
-      "image":"https://www.bmwsupplierxchange.com/images/Kirchhoff.png"
+      "image":"/images/Kirchhoff.png"
     },
     {
       "name":"Kuka",
-      "image":"https://www.bmwsupplierxchange.com/images/Kuka.png"
+      "image":"/images/Kuka.png"
     },
     {
       "name":"Merrimak",
-      "image":"http://www.bmwsupplierxchange.com/images/Merrimak.png"
+      "image":"/images/Merrimak.png"
     },
     {
       "name":"Nucor",
-      "image":"https://www.bmwsupplierxchange.com/images/Nucor.png"
+      "image":"/images/Nucor.png"
     },
     {
       "name":"P3",
-      "image":"https://www.bmwsupplierxchange.com/images/P3.png"
+      "image":"/images/P3.png"
     },   
     {
       "name": "Progressive Business Solutions",
-      "image": "https://www.bmwsupplierxchange.com/images/ProgressiveBusiness.png"
+      "image": "/images/ProgressiveBusiness.png"
     },
     {
       "name": "Revolution Trucking",
-      "image": "https://www.bmwsupplierxchange.com/images/RevolutionTrucking.png"
+      "image": "/images/RevolutionTrucking.png"
     },
     {
       "name": "SPC",
-      "image": "https://www.bmwsupplierxchange.com/images/SPC.jpeg"
+      "image": "/images/SPC.jpeg"
     },
     {
       "name":"Starline",
-      "image":"https://www.bmwsupplierxchange.com/images/Starline.png"
+      "image":"/images/Starline.png"
     },
     {
       "name": "Synera",
-      "image": "https://www.bmwsupplierxchange.com/images/Synera.png"
+      "image": "/images/Synera.png"
     }
   ]
 }
