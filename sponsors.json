@@ -1,10 +1,6 @@
 {
   "diamond": [
     {
-      "name": "ABL",
-      "image": "/images/ABL.png"
-    },
-    {
       "name": "Benore",
       "image": "/images/Benore.png"
     },
