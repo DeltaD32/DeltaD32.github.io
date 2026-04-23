@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>404 - Page Not Found | BMW Supplier XChange</title>
+	<meta name="description" content="Page not found - BMW Supplier XChange Conference">
+	<link rel="icon" type="image/png" href="https://deltad32.github.io/images/favicon.png">
+	
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-image: url(https://deltad32.github.io/images/header_bg.jpg);
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+		}
+		
+		body::before {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.85);
+			z-index: -1;
+		}
+		
+		.container {
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 60px rgba(0, 61, 120, 0.1);
+			padding: 60px 40px;
+			text-align: center;
+			max-width: 600px;
+			width: 100%;
+		}
+		
+		.logo-link {
+			display: inline-block;
+			margin-bottom: 40px;
+			transition: transform 0.3s ease;
+			background: linear-gradient(135deg, #003D78 0%, #1a5a9e 100%);
+			padding: 25px 40px;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 61, 120, 0.2);
+		}
+		
+		.logo-link:hover {
+			transform: scale(1.05);
+			box-shadow: 0 15px 40px rgba(0, 61, 120, 0.3);
+		}
+		
+		.logo {
+			max-width: 250px;
+			height: auto;
+			display: block;
+		}
+		
+		.error-code {
+			font-size: 120px;
+			font-weight: bold;
+			color: #003D78;
+			line-height: 1;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0, 61, 120, 0.1);
+		}
+		
+		.error-title {
+			font-size: 32px;
+			color: #333;
+			margin-bottom: 20px;
+			font-weight: 600;
+		}
+		
+		.error-message {
+			font-size: 18px;
+			color: #666;
+			line-height: 1.6;
+			margin-bottom: 40px;
+		}
+		
+		.btn-home {
+			display: inline-block;
+			padding: 15px 40px;
+			background-color: #003D78;
+			color: white;
+			text-decoration: none;
+			border-radius: 50px;
+			font-size: 16px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(0, 61, 120, 0.3);
+		}
+		
+		.btn-home:hover {
+			background-color: #002a54;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(0, 61, 120, 0.4);
+		}
+		
+		@media (max-width: 768px) {
+			.container {
+				padding: 40px 30px;
+			}
+			
+			.error-code {
+				font-size: 80px;
+			}
+			
+			.error-title {
+				font-size: 24px;
+			}
+			
+			.error-message {
+				font-size: 16px;
+			}
+			
+			.logo {
+				max-width: 200px;
+			}
+		}
+		
+		@media (max-width: 480px) {
+			.container {
+				padding: 30px 20px;
+			}
+			
+			.error-code {
+				font-size: 60px;
+			}
+			
+			.error-title {
+				font-size: 20px;
+			}
+			
+			.logo {
+				max-width: 180px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="https://www.bmwsupplierxchange.com" class="logo-link" aria-label="Return to BMW Supplier XChange Home">
+			<img src="https://deltad32.github.io/images/XchangeLogo.png" alt="BMW Supplier XChange Logo" class="logo">
+		</a>
+		
+		<div class="error-code">404</div>
+		<h1 class="error-title">Page Not Found</h1>
+		<p class="error-message">
+			Sorry, the page you're looking for doesn't exist or has been moved.<br>
+			Let's get you back on track.
+		</p>
+		
+		<a href="https://www.bmwsupplierxchange.com" class="btn-home">Return to Homepage</a>
+	</div>
+</body>
+</html>
