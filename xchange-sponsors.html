@@ -3130,164 +3130,164 @@ margin-bottom: 0rem;
   "diamond": [
     {
       "name": "ABL",
-      "image": "/images/iPS.png"
+      "image": "images/iPS.png"
     },
     {
       "name": "Benore",
-      "image": "/images/Benore.png"
+      "image": "images/Benore.png"
     },
     {
       "name":"Conmoto",
-      "image":"/images/Conmoto.png"
+      "image":"images/Conmoto.png"
     },
     {
       "name":"Diversified Protection Corporation",
-      "image":"/images/DPC.png"
+      "image":"images/DPC.png"
     },
     {
       "name": "Partner Academy",
-      "image":"/images/Partner_Academy.png"
+      "image":"images/Partner_Academy.png"
     }
   ],
   "platinum": [
     {
       "name": "Agile One",
-      "image": "/images/Agile-one.png"
+      "image": "images/Agile-one.png"
     },
     {
       "name": "Carolina Handling",
-      "image": "/images/CarolinaHandling.png"
+      "image": "images/CarolinaHandling.png"
     },
     {
       "name": "Evans General Contracting",
-      "image":"/images/EvansGeneral.png"
+      "image":"images/EvansGeneral.png"
     },
 
     {
         "name":"Log Systems",
-        "image":"/images/LogSystems.png"
+        "image":"images/LogSystems.png"
     },
         {
         "name":"Korn Systems",
-        "image":"/images/Korn-Consult-Group.png"
+        "image":"images/Korn-Consult-Group.png"
     },
     {
       "name":"Magna",
-      "image":"/images/Magna-Logo-HR.png"
+      "image":"images/Magna-Logo-HR.png"
     }
   ],
   "gold": [
 
     {
         "name":"Alpha",
-        "image":"/images/Alpha.png"
+        "image":"images/Alpha.png"
     },
     {
       "name":"CPM",
-      "image":"/images/CPM.png"
+      "image":"images/CPM.png"
     },
     {
       "name": "Daubert",
-      "image": "/images/Daubert.png"
+      "image": "images/Daubert.png"
     },
     {
       "name": "Eisenmann",
-      "image": "/images/Eisenmann.png"
+      "image": "images/Eisenmann.png"
     },
 
     {
       "name": "Lion Power",
-      "image": "/images/LionPower.png"
+      "image": "images/LionPower.png"
     },
     {
       "name": "Mill Steel Company",
-      "image": "/images/MillSteel.png"
+      "image": "images/MillSteel.png"
     },
 
     {
       "name":"Nippon",
-      "image":"/images/Nippon-Express.png"
+      "image":"images/Nippon-Express.png"
     },   
 
     {
       "name":"Smith Engineering",
-      "image":"/images/Smith-Engineering.png"
+      "image":"images/Smith-Engineering.png"
     },
     {
       "name":"Steel Summit",
-      "image":"/images/Steel-Summit.png"
+      "image":"images/Steel-Summit.png"
     },
         
     {
       "name":"Steel Tech",
-      "image":"/images/Steel-Tech.png"
+      "image":"images/Steel-Tech.png"
     },
     {
         "name":"Tajco",
-        "image":"/images/TAJCO.png"
+        "image":"images/TAJCO.png"
     },
 
     {
         "name":"Trigo",
-        "image":"/images/Trigo.png"
+        "image":"images/Trigo.png"
     },
     {
       "name": "Yanfeng",
-      "image":"/images/Yanfeng.png"
+      "image":"images/Yanfeng.png"
     }
   ],
   "silver": [
     {
       "name": "Alloy Group",
-      "image": "/images/Alloy.png"
+      "image": "images/Alloy.png"
     },
     {
       "name": "BCBS SC",
-      "image": "/images/SC-BlueCross-Blueshield.png"
+      "image": "images/SC-BlueCross-Blueshield.png"
     },
     {
       "name": "JLL",
-      "image": "/images/JLL.png"
+      "image": "images/JLL.png"
     },
     {
       "name":"Kluber",
-      "image":"/images/Kluber.png"
+      "image":"images/Kluber.png"
     },
     {
       "name":"Kirchoff",
-      "image":"/images/Kirchhoff.png"
+      "image":"images/Kirchhoff.png"
     },
     {
       "name":"Kuka",
-      "image":"/images/Kuka.png"
+      "image":"images/Kuka.png"
     },
     {
       "name":"Merrimak",
-      "image":"/images/Merrimak.png"
+      "image":"images/Merrimak.png"
     },
     {
       "name":"Nucor",
-      "image":"/images/Nucor.png"
+      "image":"images/Nucor.png"
     },
     {
       "name":"P3",
-      "image":"/images/P3.png"
+      "image":"images/P3.png"
     },   
     {
       "name": "Progressive Business Solutions",
-      "image": "/images/ProgressiveBusiness.png"
+      "image": "images/ProgressiveBusiness.png"
     },
     {
       "name": "Revolution Trucking",
-      "image": "/images/RevolutionTrucking.png"
+      "image": "images/RevolutionTrucking.png"
     },
     {
       "name": "SPC",
-      "image": "/images/SPC.jpeg"
+      "image": "images/SPC.jpeg"
     },
     {
       "name": "Synera",
-      "image": "/images/Synera.png"
+      "image": "images/Synera.png"
     }
   ]
 }
@@ -3296,7 +3296,7 @@ margin-bottom: 0rem;
     // Configuration - try multiple paths for the JSON file
     const SPONSORS_JSON_URLS = [
         '/sponsors.json',  // Absolute GitHub Pages URL (production)
-        '../sponsors.json',  // Relative path for local testing
+        './sponsors.json',  // Relative path for local testing
         '/sponsors.json'     // Root absolute path
     ];
     
@@ -3369,10 +3369,11 @@ margin-bottom: 0rem;
             let sponsorsAdded = 0;
             
             tiers.forEach(tier => {
-                const sponsors = sponsorsData[tier];
+                const allSponsors = sponsorsData[tier];
+                const sponsors = (allSponsors || []).filter(s => s.image && s.image.trim() !== '');
                 
                 // Skip if no sponsors for this tier
-                if (!sponsors || sponsors.length === 0) {
+                if (sponsors.length === 0) {
                     console.log(`No sponsors found for ${tier} tier`);
                     return;
                 }
