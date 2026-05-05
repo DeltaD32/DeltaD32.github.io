@@ -10,7 +10,7 @@
   left: 0;
   right: 0;
   height: 100px;
-  background-color: #00396F;
+  background-color: rgba(0,61,120,1);
   color: #ffffff;
   z-index: 1100;
   display: flex;
@@ -140,7 +140,7 @@ body:not(.xchange-banner-open) nav#navbar-main {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #00396F;
+  background-color: rgba(0,61,120,1);
   border: none;
   color: #ffffff;
   display: flex;
