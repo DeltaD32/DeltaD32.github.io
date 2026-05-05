@@ -72,7 +72,11 @@
     },
     {
       "name":"Allegiance Staffing",
-      "image":""
+      "image":"images/Allegiance.png"
+    },
+    {
+      "name":"Atlas Copco",
+      "image":"images/Atlas.png"
     },
     {
       "name":"Clean Tech",
@@ -124,6 +128,10 @@
       "image": "images/OOBE.png"
     },
     {
+      "name":"Servexo",
+      "image":"images/Servexo.png"
+    },
+    {
       "name":"Smith Engineering",
       "image":"images/sponsors/3_Gold/SmithEngineering/Smith_Engineering_Logo.png"
     },
@@ -147,7 +155,7 @@
     },
     {
       "name":"Vierge Group LLC",
-      "image":""
+      "image":"images/Vierge.png"
     },
 
     {
@@ -194,7 +202,7 @@
     },
     {
       "name":"I.K. Hoffman",
-      "image":""
+      "image":"images/IKHoffman.png"
     },
     {
       "name": "JLL",
