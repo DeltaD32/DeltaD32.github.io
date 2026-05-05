@@ -140,7 +140,7 @@ body:not(.xchange-banner-open) nav#navbar-main {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: rgba(12, 99, 255, 1);
+  background-color: #00396F;
   border: none;
   color: #ffffff;
   display: flex;
