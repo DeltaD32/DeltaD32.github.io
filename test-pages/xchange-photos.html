@@ -1085,10 +1085,88 @@ margin-bottom: 0rem;
 		font-weight: 700;
 		color: #262626;
 	}
+	.event-photos-view-toggle {
+		display: flex;
+		justify-content: center;
+		gap: 0;
+		margin: 0 auto 28px;
+	}
+	.event-photos-view-toggle .view-toggle-btn {
+		background: #fff;
+		color: #1c69d4;
+		border: 1px solid #1c69d4;
+		padding: 9px 26px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.2s ease, color 0.2s ease;
+	}
+	.event-photos-view-toggle .view-toggle-btn:first-child { border-radius: 4px 0 0 4px; }
+	.event-photos-view-toggle .view-toggle-btn:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+	.event-photos-view-toggle .view-toggle-btn.is-active {
+		background: #1c69d4;
+		color: #fff;
+	}
+	.event-photo-mosaic {
+		width: 80vw;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.event-photo-mosaic .mosaic-section { margin-bottom: 44px; }
+	.event-photo-mosaic .mosaic-section:last-child { margin-bottom: 0; }
+	.event-photo-mosaic .mosaic-section-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #1c69d4;
+		text-align: center;
+		margin: 0 0 22px;
+	}
+	.event-photo-mosaic .mosaic-grid {
+		column-count: 4;
+		column-gap: 12px;
+	}
+	.event-photo-mosaic .mosaic-item {
+		position: relative;
+		break-inside: avoid;
+		margin: 0 0 12px;
+		display: block;
+	}
+	.event-photo-mosaic .mosaic-item img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: 6px;
+	}
+	.event-photo-mosaic .photo-fullscreen-btn {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: none;
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.55);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 0.2s ease, background 0.2s ease;
+		z-index: 3;
+	}
+	.event-photo-mosaic .mosaic-item:hover .photo-fullscreen-btn { opacity: 1; }
+	.event-photo-mosaic .photo-fullscreen-btn:hover { background: rgba(0, 0, 0, 0.82); }
 	@media (max-width: 991px) {
 		.event-photo-carousel { width: 92vw; max-width: 92vw; }
 		.event-photo-slide .event-photo-frame { height: 260px; }
 		.event-photo-slide img { height: 260px !important; max-height: 260px !important; }
+		.event-photo-mosaic { width: 92vw; max-width: 92vw; }
+		.event-photo-mosaic .mosaic-grid { column-count: 3; }
+	}
+	@media (max-width: 640px) {
+		.event-photo-mosaic .mosaic-grid { column-count: 2; }
 	}
 </style>
 </head>
@@ -1399,12 +1477,17 @@ margin-bottom: 0rem;
 								
 								
 								<div id="event-photos-status" class="text-center sr-spacer-bottom-25">Loading event photos…</div>
+<div id="event-photos-view-toggle" class="event-photos-view-toggle" style="display:none;">
+	<button type="button" class="view-toggle-btn is-active" data-view="carousel">Carousel</button>
+	<button type="button" class="view-toggle-btn" data-view="mosaic">Mosaic</button>
+</div>
 <div id="event-photos-carousel" class="event-photo-carousel"></div>
 <div id="event-photos-section-nav" class="event-photos-section-nav" style="display:none;">
 	<button type="button" class="section-nav-btn" data-dir="prev">&#8249; Previous section</button>
 	<span id="event-photos-section-label" class="section-nav-label"></span>
 	<button type="button" class="section-nav-btn" data-dir="next">Next section &#8250;</button>
 </div>
+<div id="event-photos-mosaic" class="event-photo-mosaic" hidden></div>
 								
 								
 							</div>
@@ -1734,6 +1817,10 @@ var hsVars = {
 		var carouselEl = document.getElementById('event-photos-carousel');
 		var sectionNavEl = document.getElementById('event-photos-section-nav');
 		var sectionLabelEl = document.getElementById('event-photos-section-label');
+		var viewToggleEl = document.getElementById('event-photos-view-toggle');
+		var mosaicEl = document.getElementById('event-photos-mosaic');
+
+		var FULLSCREEN_BTN = '<button type="button" class="photo-fullscreen-btn" aria-label="View full screen"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16 0h-6v2h8v-8h-2v6z"/></svg></button>';
 
 		function sanitizePhotos(data) {
 			if (!Array.isArray(data)) { return []; }
@@ -1861,22 +1948,56 @@ var hsVars = {
 				document.addEventListener('keydown', function (event) {
 					if (event.key === 'Escape' && overlay.classList.contains('is-open')) { closeOverlay(); }
 				});
-			}
 
-			if (!carouselEl.dataset.fullscreenWired) {
-				carouselEl.dataset.fullscreenWired = 'true';
-				carouselEl.addEventListener('click', function (event) {
+				document.addEventListener('click', function (event) {
 					var btn = event.target.closest && event.target.closest('.photo-fullscreen-btn');
 					if (!btn) { return; }
 					var img = btn.parentNode.querySelector('img');
 					if (!img) { return; }
-					var ov = document.getElementById('photo-fullscreen-overlay');
-					var ovImg = ov.querySelector('img');
-					ovImg.src = img.src;
-					ovImg.alt = img.alt;
-					ov.classList.add('is-open');
+					overlayImg.src = img.src;
+					overlayImg.alt = img.alt;
+					overlay.classList.add('is-open');
 				});
 			}
+		}
+
+		function renderMosaic(photos) {
+			var sections = buildSections(photos);
+			var html = sections.map(function (section, idx) {
+				var end = (idx + 1 < sections.length) ? sections[idx + 1].start : photos.length;
+				var items = photos.slice(section.start, end).map(function (photo) {
+					return '<figure class="mosaic-item">' +
+						'<img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
+						FULLSCREEN_BTN +
+						'</figure>';
+				}).join('');
+				return '<section class="mosaic-section">' +
+					'<h3 class="mosaic-section-title">' + escapeHtml(formatCategory(section.name)) + '</h3>' +
+					'<div class="mosaic-grid">' + items + '</div>' +
+					'</section>';
+			}).join('');
+			mosaicEl.innerHTML = html;
+		}
+
+		function wireViewToggle() {
+			if (viewToggleEl.dataset.wired) { return; }
+			viewToggleEl.dataset.wired = 'true';
+			viewToggleEl.style.display = 'flex';
+			Array.prototype.forEach.call(viewToggleEl.querySelectorAll('.view-toggle-btn'), function (btn) {
+				btn.addEventListener('click', function () {
+					var view = btn.getAttribute('data-view');
+					Array.prototype.forEach.call(viewToggleEl.querySelectorAll('.view-toggle-btn'), function (b) {
+						b.classList.toggle('is-active', b === btn);
+					});
+					var showMosaic = (view === 'mosaic');
+					mosaicEl.hidden = !showMosaic;
+					carouselEl.style.display = showMosaic ? 'none' : '';
+					sectionNavEl.style.display = showMosaic ? 'none' : 'flex';
+					if (!showMosaic) {
+						window.jQuery(carouselEl).slick('setPosition');
+					}
+				});
+			});
 		}
 
 		function renderPhotos(photos) {
@@ -1889,7 +2010,7 @@ var hsVars = {
 				var caption = photo.category ? '<figcaption>' + escapeHtml(photo.category) + '</figcaption>' : '';
 				return '<div class="event-photo-slide"><figure>' +
 					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
-					'<button type="button" class="photo-fullscreen-btn" aria-label="View full screen"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16 0h-6v2h8v-8h-2v6z"/></svg></button>' +
+					FULLSCREEN_BTN +
 					'</span>' +
 					caption + '</figure></div>';
 			}).join('');
@@ -1907,6 +2028,8 @@ var hsVars = {
 
 			wireFullscreen();
 			wireSectionNav(photos);
+			renderMosaic(photos);
+			wireViewToggle();
 		}
 
 		function init() {
