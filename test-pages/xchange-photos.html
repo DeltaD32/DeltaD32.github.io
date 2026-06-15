@@ -1831,9 +1831,16 @@ var hsVars = {
 <script>
 	(function () {
 		var FALLBACK_PHOTOS = [
-			{ path: 'images/EventPhotos/CoachCPhotos/Carter-17.jpg', alt: 'Coach Carter photo 17', category: 'Coach Carter' },
-			{ path: 'images/EventPhotos/KickOff/Kic-105.jpg', alt: 'Kickoff photo 105', category: 'Kick Off' },
-			{ path: 'images/EventPhotos/PhotoBooth/BMW-160.jpg', alt: 'Photo booth image 160', category: 'Photo Booth' }
+			{ path: 'images/EventPhotos/Kick%20Off/Kic-1.jpg', alt: 'Kick Off — Kic-1', category: 'Kick Off', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Kick%20Off/Kic-11.jpg', alt: 'Kick Off — Kic-11', category: 'Kick Off', w: 1366, h: 2048 },
+			{ path: 'images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0010.jpg', alt: 'Event Candids — 0010', category: 'Event Candids', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0103.jpg', alt: 'Event Candids — 0103', category: 'Event Candids', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Luncheon/BMW-18.jpg', alt: 'Luncheon — BMW-18', category: 'Luncheon', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Luncheon/BMW-49.jpg', alt: 'Luncheon — BMW-49', category: 'Luncheon', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Coach%20Carter%20Photos/Carter-2.jpg', alt: 'Coach Carter Photos — Carter-2', category: 'Coach Carter Photos', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Coach%20Carter%20Photos/Carter-9.jpg', alt: 'Coach Carter Photos — Carter-9', category: 'Coach Carter Photos', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Photo%20Booth/BMW-7.jpg', alt: 'Photo Booth — BMW-7', category: 'Photo Booth', w: 2048, h: 1366 },
+			{ path: 'images/EventPhotos/Photo%20Booth/BMW-36.jpg', alt: 'Photo Booth — BMW-36', category: 'Photo Booth', w: 2048, h: 1366 }
 		];
 
 		var PHOTO_JSON_URLS = ['/event-photos.json', './event-photos.json', 'event-photos.json'];
@@ -1855,7 +1862,9 @@ var hsVars = {
 					return {
 						path: item.path.trim(),
 						alt: typeof item.alt === 'string' && item.alt.trim().length > 0 ? item.alt.trim() : 'Event photo',
-						category: typeof item.category === 'string' ? item.category.trim() : ''
+						category: typeof item.category === 'string' ? item.category.trim() : '',
+						w: parseInt(item.w, 10) > 0 ? parseInt(item.w, 10) : 0,
+						h: parseInt(item.h, 10) > 0 ? parseInt(item.h, 10) : 0
 					};
 				});
 		}
@@ -1883,20 +1892,9 @@ var hsVars = {
 		}
 
 		function keepPresentPhotos(photos) {
-			return Promise.all(photos.map(function (photo) {
-				return new Promise(function (resolve) {
-					var img = new Image();
-					img.onload = function () {
-						photo.w = img.naturalWidth || 0;
-						photo.h = img.naturalHeight || 0;
-						resolve(photo);
-					};
-					img.onerror = function () { resolve(null); };
-					img.src = photo.path;
-				});
-			})).then(function (results) {
-				return results.filter(function (photo) { return photo !== null; });
-			});
+			// Dimensions come baked into the manifest, so we no longer pre-download
+			// every full-resolution image before rendering. Images lazy-load instead.
+			return photos;
 		}
 
 		function formatCategory(category) {
@@ -2040,7 +2038,7 @@ var hsVars = {
 				var items = photos.slice(section.start, end).map(function (photo) {
 					var aspect = (photo.w && photo.h) ? (photo.w / photo.h) : 1.5;
 					return '<figure class="justified-item" data-aspect="' + aspect.toFixed(4) + '" data-aos="fade-up">' +
-						'<img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
+						'<img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy" onerror="this.closest(\'.justified-item\').style.display=\'none\'">' +
 						FULLSCREEN_BTN +
 						'</figure>';
 				}).join('');
@@ -2133,7 +2131,7 @@ var hsVars = {
 			carouselEl.innerHTML = photos.map(function (photo) {
 				var caption = photo.category ? '<figcaption>' + escapeHtml(photo.category) + '</figcaption>' : '';
 				return '<div class="event-photo-slide"><figure>' +
-					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
+					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy" onerror="this.closest(\'.event-photo-slide\').style.display=\'none\'">' +
 					FULLSCREEN_BTN +
 					'</span>' +
 					caption + '</figure></div>';
