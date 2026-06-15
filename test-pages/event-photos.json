@@ -1,197 +1,275 @@
 [
   {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-2.jpg",
-    "alt": "Coach Carter Photos — Carter 2",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-9.jpg",
-    "alt": "Coach Carter Photos — Carter 9",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-12.jpg",
-    "alt": "Coach Carter Photos — Carter 12",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-14.jpg",
-    "alt": "Coach Carter Photos — Carter 14",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-17.jpg",
-    "alt": "Coach Carter Photos — Carter 17",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-186.jpg",
-    "alt": "Coach Carter Photos — Carter 186",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Coach Carter Photos/Carter-207.jpg",
-    "alt": "Coach Carter Photos — Carter 207",
-    "category": "Coach Carter Photos"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0010.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0010",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0103.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0103",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0137.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0137",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0177.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0177",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0218.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0218",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0287.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0287",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0409.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0409",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0450.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0450",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0523.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0523",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0567.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0567",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0675.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0675",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Event Candids/BMW_SupplierXchange_May26_0882.jpg",
-    "alt": "Event Candids — BMW Supplier Xchange May26 0882",
-    "category": "Event Candids"
-  },
-  {
-    "path": "images/EventPhotos/Kick Off/Kic-1.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-1.jpg",
     "alt": "Kick Off — Kic 1",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-4.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-4.jpg",
     "alt": "Kick Off — Kic 4",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-11.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-11.jpg",
     "alt": "Kick Off — Kic 11",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 1366,
+    "h": 2048
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-14.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-14.jpg",
     "alt": "Kick Off — Kic 14",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-26.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-26.jpg",
     "alt": "Kick Off — Kic 26",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-56.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-56.jpg",
     "alt": "Kick Off — Kic 56",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-82.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-82.jpg",
     "alt": "Kick Off — Kic 82",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-105.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-105.jpg",
     "alt": "Kick Off — Kic 105",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-110.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-110.jpg",
     "alt": "Kick Off — Kic 110",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-117.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-117.jpg",
     "alt": "Kick Off — Kic 117",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
   },
   {
-    "path": "images/EventPhotos/Kick Off/Kic-130.jpg",
+    "path": "images/EventPhotos/Kick%20Off/Kic-130.jpg",
     "alt": "Kick Off — Kic 130",
-    "category": "Kick Off"
+    "category": "Kick Off",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0010.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0010",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0103.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0103",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0137.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0137",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0177.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0177",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0218.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0218",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0287.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0287",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0409.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0409",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0450.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0450",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0523.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0523",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0567.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0567",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0675.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0675",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Event%20Candids/BMW_SupplierXchange_May26_0882.jpg",
+    "alt": "Event Candids — BMW Supplier Xchange May26 0882",
+    "category": "Event Candids",
+    "w": 2048,
+    "h": 1366
   },
   {
     "path": "images/EventPhotos/Luncheon/BMW-18.jpg",
     "alt": "Luncheon — BMW 18",
-    "category": "Luncheon"
+    "category": "Luncheon",
+    "w": 2048,
+    "h": 1365
   },
   {
     "path": "images/EventPhotos/Luncheon/BMW-49.jpg",
     "alt": "Luncheon — BMW 49",
-    "category": "Luncheon"
+    "category": "Luncheon",
+    "w": 2048,
+    "h": 1365
   },
   {
     "path": "images/EventPhotos/Luncheon/BMW-53.jpg",
     "alt": "Luncheon — BMW 53",
-    "category": "Luncheon"
+    "category": "Luncheon",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-7.jpg",
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-2.jpg",
+    "alt": "Coach Carter Photos — Carter 2",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-9.jpg",
+    "alt": "Coach Carter Photos — Carter 9",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-12.jpg",
+    "alt": "Coach Carter Photos — Carter 12",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-14.jpg",
+    "alt": "Coach Carter Photos — Carter 14",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-17.jpg",
+    "alt": "Coach Carter Photos — Carter 17",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-186.jpg",
+    "alt": "Coach Carter Photos — Carter 186",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Coach%20Carter%20Photos/Carter-207.jpg",
+    "alt": "Coach Carter Photos — Carter 207",
+    "category": "Coach Carter Photos",
+    "w": 2048,
+    "h": 1366
+  },
+  {
+    "path": "images/EventPhotos/Photo%20Booth/BMW-7.jpg",
     "alt": "Photo Booth — BMW 7",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-36.jpg",
+    "path": "images/EventPhotos/Photo%20Booth/BMW-36.jpg",
     "alt": "Photo Booth — BMW 36",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-160.jpg",
+    "path": "images/EventPhotos/Photo%20Booth/BMW-160.jpg",
     "alt": "Photo Booth — BMW 160",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-226.jpg",
+    "path": "images/EventPhotos/Photo%20Booth/BMW-226.jpg",
     "alt": "Photo Booth — BMW 226",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-229.jpg",
+    "path": "images/EventPhotos/Photo%20Booth/BMW-229.jpg",
     "alt": "Photo Booth — BMW 229",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   },
   {
-    "path": "images/EventPhotos/Photo Booth/BMW-233.jpg",
+    "path": "images/EventPhotos/Photo%20Booth/BMW-233.jpg",
     "alt": "Photo Booth — BMW 233",
-    "category": "Photo Booth"
+    "category": "Photo Booth",
+    "w": 2048,
+    "h": 1365
   }
 ]
