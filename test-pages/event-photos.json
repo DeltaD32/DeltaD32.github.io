@@ -35,6 +35,41 @@
     "category": "Coach Carter Photos"
   },
   {
+    "path": "images/EventPhotos/KickOff/Kic-1.jpg",
+    "alt": "Kick Off — Kic 1",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-4.jpg",
+    "alt": "Kick Off — Kic 4",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-11.jpg",
+    "alt": "Kick Off — Kic 11",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-14.jpg",
+    "alt": "Kick Off — Kic 14",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-26.jpg",
+    "alt": "Kick Off — Kic 26",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-56.jpg",
+    "alt": "Kick Off — Kic 56",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-82.jpg",
+    "alt": "Kick Off — Kic 82",
+    "category": "KickOff"
+  },
+  {
     "path": "images/EventPhotos/KickOff/Kic-105.jpg",
     "alt": "Kick Off — Kic 105",
     "category": "KickOff"
@@ -42,6 +77,11 @@
   {
     "path": "images/EventPhotos/KickOff/Kic-110.jpg",
     "alt": "Kick Off — Kic 110",
+    "category": "KickOff"
+  },
+  {
+    "path": "images/EventPhotos/KickOff/Kic-117.jpg",
+    "alt": "Kick Off — Kic 117",
     "category": "KickOff"
   },
   {
@@ -70,13 +110,28 @@
     "category": "PhotoBooth"
   },
   {
+    "path": "images/EventPhotos/PhotoBooth/BMW-36.jpg",
+    "alt": "Photo Booth — BMW 36",
+    "category": "PhotoBooth"
+  },
+  {
     "path": "images/EventPhotos/PhotoBooth/BMW-160.jpg",
     "alt": "Photo Booth — BMW 160",
     "category": "PhotoBooth"
   },
   {
-    "path": "images/EventPhotos/PhotoBooth/BMW-230.jpg",
-    "alt": "Photo Booth — BMW 230",
+    "path": "images/EventPhotos/PhotoBooth/BMW-226.jpg",
+    "alt": "Photo Booth — BMW 226",
+    "category": "PhotoBooth"
+  },
+  {
+    "path": "images/EventPhotos/PhotoBooth/BMW-229.jpg",
+    "alt": "Photo Booth — BMW 229",
+    "category": "PhotoBooth"
+  },
+  {
+    "path": "images/EventPhotos/PhotoBooth/BMW-233.jpg",
+    "alt": "Photo Booth — BMW 233",
     "category": "PhotoBooth"
   }
 ]
