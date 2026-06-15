@@ -943,34 +943,89 @@ margin-bottom: 0rem;
 	.event-photo-slide { padding: 0 10px; box-sizing: border-box; }
 	.event-photo-slide figure {
 		margin: 0;
-		display: flex;
+		display: inline-flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
 	}
 	.event-photo-slide .event-photo-frame {
-		width: 100%;
-		height: 360px;
+		position: relative;
+		height: 350px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 	.event-photo-slide img {
 		width: auto !important;
-		max-width: 100% !important;
-		height: 360px !important;
-		max-height: 360px !important;
+		height: 350px !important;
+		max-height: 350px !important;
 		object-fit: contain !important;
 		border-radius: 6px;
 		display: block;
-		margin: 0 auto;
 	}
+	.event-photo-slide .photo-fullscreen-btn {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: none;
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.55);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		opacity: 0.85;
+		transition: opacity 0.2s ease, background 0.2s ease;
+		z-index: 3;
+	}
+	.event-photo-slide .event-photo-frame:hover .photo-fullscreen-btn { opacity: 1; }
+	.event-photo-slide .photo-fullscreen-btn:hover { background: rgba(0, 0, 0, 0.82); }
 	.event-photo-slide figcaption {
 		margin-top: 10px;
 		font-size: 0.875rem;
 		text-align: center;
 		color: #4a4a4a;
 	}
+	.photo-fullscreen-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.92);
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 40px;
+		box-sizing: border-box;
+		z-index: 99999;
+	}
+	.photo-fullscreen-overlay.is-open { display: flex; }
+	.photo-fullscreen-overlay img {
+		max-width: 95vw;
+		max-height: 90vh;
+		width: auto;
+		height: auto;
+		border-radius: 6px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+	}
+	.photo-fullscreen-overlay .photo-fullscreen-close {
+		position: absolute;
+		top: 20px;
+		right: 28px;
+		width: 46px;
+		height: 46px;
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+		font-size: 28px;
+		line-height: 1;
+		cursor: pointer;
+	}
+	.photo-fullscreen-overlay .photo-fullscreen-close:hover { background: rgba(255, 255, 255, 0.28); }
 	#event-photos-status { color: #6c6c6c; }
 	#event-photos-carousel .slick-prev,
 	#event-photos-carousel .slick-next {
@@ -1032,8 +1087,8 @@ margin-bottom: 0rem;
 	}
 	@media (max-width: 991px) {
 		.event-photo-carousel { width: 92vw; max-width: 92vw; }
-		.event-photo-slide .event-photo-frame { height: 280px; }
-		.event-photo-slide img { height: 280px !important; max-height: 280px !important; }
+		.event-photo-slide .event-photo-frame { height: 260px; }
+		.event-photo-slide img { height: 260px !important; max-height: 260px !important; }
 	}
 </style>
 </head>
@@ -1413,7 +1468,7 @@ margin-bottom: 0rem;
 </h5>
 										
 										<div class="description">
-											<p>Browse all event photos in high resolution on our externally hosted galleries.</p>
+											<p>Looking for more photos? Check out the event photos in our PixieSet album and check out the speaker photos in our SmugMug gallery.</p>
 										</div>
 										
 									</div>
@@ -1464,7 +1519,7 @@ margin-bottom: 0rem;
 			
 
 				<br><hr>
-<p class="small">Â©2024 BMW. All rights reserved. Privacy Policy</p>
+<p class="small">©2024 BMW. All rights reserved. Privacy Policy</p>
 
 			
 		</div>
@@ -1785,6 +1840,45 @@ var hsVars = {
 			});
 		}
 
+		function wireFullscreen() {
+			var overlay = document.getElementById('photo-fullscreen-overlay');
+			if (!overlay) {
+				overlay = document.createElement('div');
+				overlay.id = 'photo-fullscreen-overlay';
+				overlay.className = 'photo-fullscreen-overlay';
+				overlay.innerHTML = '<button type="button" class="photo-fullscreen-close" aria-label="Close full screen">&times;</button><img alt="">';
+				document.body.appendChild(overlay);
+
+				var overlayImg = overlay.querySelector('img');
+				var closeOverlay = function () {
+					overlay.classList.remove('is-open');
+					overlayImg.removeAttribute('src');
+				};
+				overlay.querySelector('.photo-fullscreen-close').addEventListener('click', closeOverlay);
+				overlay.addEventListener('click', function (event) {
+					if (event.target === overlay) { closeOverlay(); }
+				});
+				document.addEventListener('keydown', function (event) {
+					if (event.key === 'Escape' && overlay.classList.contains('is-open')) { closeOverlay(); }
+				});
+			}
+
+			if (!carouselEl.dataset.fullscreenWired) {
+				carouselEl.dataset.fullscreenWired = 'true';
+				carouselEl.addEventListener('click', function (event) {
+					var btn = event.target.closest && event.target.closest('.photo-fullscreen-btn');
+					if (!btn) { return; }
+					var img = btn.parentNode.querySelector('img');
+					if (!img) { return; }
+					var ov = document.getElementById('photo-fullscreen-overlay');
+					var ovImg = ov.querySelector('img');
+					ovImg.src = img.src;
+					ovImg.alt = img.alt;
+					ov.classList.add('is-open');
+				});
+			}
+		}
+
 		function renderPhotos(photos) {
 			if (!photos.length) {
 				statusEl.textContent = 'No photos available right now. Please use the full galleries below.';
@@ -1794,7 +1888,9 @@ var hsVars = {
 			carouselEl.innerHTML = photos.map(function (photo) {
 				var caption = photo.category ? '<figcaption>' + escapeHtml(photo.category) + '</figcaption>' : '';
 				return '<div class="event-photo-slide"><figure>' +
-					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy"></span>' +
+					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
+					'<button type="button" class="photo-fullscreen-btn" aria-label="View full screen"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16 0h-6v2h8v-8h-2v6z"/></svg></button>' +
+					'</span>' +
 					caption + '</figure></div>';
 			}).join('');
 
@@ -1805,14 +1901,11 @@ var hsVars = {
 				infinite: true,
 				arrows: true,
 				speed: 450,
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				responsive: [
-					{ breakpoint: 992, settings: { slidesToShow: 2 } },
-					{ breakpoint: 640, settings: { slidesToShow: 1 } }
-				]
+				variableWidth: true,
+				slidesToScroll: 1
 			});
 
+			wireFullscreen();
 			wireSectionNav(photos);
 		}
 
