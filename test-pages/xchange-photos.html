@@ -929,6 +929,7 @@ margin-bottom: 0rem;
 	<meta name="generator" content="HubSpot">
 <link rel="stylesheet" href="css/xchange-banner.css">
 <link rel="stylesheet" href="css/template_slick.min.css">
+<link rel="stylesheet" href="css/template_aos.min.css">
 <style>
 	.event-photo-carousel {
 		width: 60vw;
@@ -1026,6 +1027,27 @@ margin-bottom: 0rem;
 		cursor: pointer;
 	}
 	.photo-fullscreen-overlay .photo-fullscreen-close:hover { background: rgba(255, 255, 255, 0.28); }
+	.photo-fullscreen-overlay .photo-fullscreen-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 54px;
+		height: 54px;
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+		font-size: 34px;
+		line-height: 1;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.photo-fullscreen-overlay .photo-fullscreen-nav:hover { background: rgba(255, 255, 255, 0.28); }
+	.photo-fullscreen-overlay .photo-fullscreen-prev { left: 24px; }
+	.photo-fullscreen-overlay .photo-fullscreen-next { right: 24px; }
 	#event-photos-status { color: #6c6c6c; }
 	#event-photos-carousel .slick-prev,
 	#event-photos-carousel .slick-next {
@@ -1107,37 +1129,43 @@ margin-bottom: 0rem;
 		background: #1c69d4;
 		color: #fff;
 	}
-	.event-photo-mosaic {
+	.event-photo-justified {
 		width: 80vw;
 		max-width: 1200px;
-		margin: 0 auto;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		margin: 0;
+		box-sizing: border-box;
 	}
-	.event-photo-mosaic .mosaic-section { margin-bottom: 44px; }
-	.event-photo-mosaic .mosaic-section:last-child { margin-bottom: 0; }
-	.event-photo-mosaic .mosaic-section-title {
+	.event-photo-justified .justified-section { margin-bottom: 44px; }
+	.event-photo-justified .justified-section:last-child { margin-bottom: 0; }
+	.event-photo-justified .justified-section-title {
 		font-size: 1.5rem;
 		font-weight: 700;
 		color: #1c69d4;
 		text-align: center;
 		margin: 0 0 22px;
 	}
-	.event-photo-mosaic .mosaic-grid {
-		column-count: 4;
-		column-gap: 12px;
+	.event-photo-justified .justified-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
-	.event-photo-mosaic .mosaic-item {
+	.event-photo-justified .justified-item {
 		position: relative;
-		break-inside: avoid;
-		margin: 0 0 12px;
-		display: block;
-	}
-	.event-photo-mosaic .mosaic-item img {
-		width: 100%;
-		height: auto;
-		display: block;
+		flex: 0 0 auto;
+		overflow: hidden;
 		border-radius: 6px;
+		margin: 0;
 	}
-	.event-photo-mosaic .photo-fullscreen-btn {
+	.event-photo-justified .justified-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.event-photo-justified .photo-fullscreen-btn {
 		position: absolute;
 		top: 8px;
 		right: 8px;
@@ -1156,17 +1184,13 @@ margin-bottom: 0rem;
 		transition: opacity 0.2s ease, background 0.2s ease;
 		z-index: 3;
 	}
-	.event-photo-mosaic .mosaic-item:hover .photo-fullscreen-btn { opacity: 1; }
-	.event-photo-mosaic .photo-fullscreen-btn:hover { background: rgba(0, 0, 0, 0.82); }
+	.event-photo-justified .justified-item:hover .photo-fullscreen-btn { opacity: 1; }
+	.event-photo-justified .photo-fullscreen-btn:hover { background: rgba(0, 0, 0, 0.82); }
 	@media (max-width: 991px) {
 		.event-photo-carousel { width: 92vw; max-width: 92vw; }
 		.event-photo-slide .event-photo-frame { height: 260px; }
 		.event-photo-slide img { height: 260px !important; max-height: 260px !important; }
-		.event-photo-mosaic { width: 92vw; max-width: 92vw; }
-		.event-photo-mosaic .mosaic-grid { column-count: 3; }
-	}
-	@media (max-width: 640px) {
-		.event-photo-mosaic .mosaic-grid { column-count: 2; }
+		.event-photo-justified { width: 92vw; max-width: 92vw; }
 	}
 </style>
 </head>
@@ -1479,7 +1503,7 @@ margin-bottom: 0rem;
 								<div id="event-photos-status" class="text-center sr-spacer-bottom-25">Loading event photos…</div>
 <div id="event-photos-view-toggle" class="event-photos-view-toggle" style="display:none;">
 	<button type="button" class="view-toggle-btn is-active" data-view="carousel">Carousel</button>
-	<button type="button" class="view-toggle-btn" data-view="mosaic">Mosaic</button>
+	<button type="button" class="view-toggle-btn" data-view="gallery">Gallery</button>
 </div>
 <div id="event-photos-carousel" class="event-photo-carousel"></div>
 <div id="event-photos-section-nav" class="event-photos-section-nav" style="display:none;">
@@ -1487,7 +1511,7 @@ margin-bottom: 0rem;
 	<span id="event-photos-section-label" class="section-nav-label"></span>
 	<button type="button" class="section-nav-btn" data-dir="next">Next section &#8250;</button>
 </div>
-<div id="event-photos-mosaic" class="event-photo-mosaic" hidden></div>
+<div id="event-photos-justified" class="event-photo-justified" hidden></div>
 								
 								
 							</div>
@@ -1803,6 +1827,7 @@ var hsVars = {
 </script>
 <!-- copilot-nav-active-marker -->
 <script defer src="js/template_slick.min.js"></script>
+<script defer src="js/template_aos.min.js"></script>
 <script>
 	(function () {
 		var FALLBACK_PHOTOS = [
@@ -1818,7 +1843,7 @@ var hsVars = {
 		var sectionNavEl = document.getElementById('event-photos-section-nav');
 		var sectionLabelEl = document.getElementById('event-photos-section-label');
 		var viewToggleEl = document.getElementById('event-photos-view-toggle');
-		var mosaicEl = document.getElementById('event-photos-mosaic');
+		var justifiedEl = document.getElementById('event-photos-justified');
 
 		var FULLSCREEN_BTN = '<button type="button" class="photo-fullscreen-btn" aria-label="View full screen"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16 0h-6v2h8v-8h-2v6z"/></svg></button>';
 
@@ -1861,7 +1886,11 @@ var hsVars = {
 			return Promise.all(photos.map(function (photo) {
 				return new Promise(function (resolve) {
 					var img = new Image();
-					img.onload = function () { resolve(photo); };
+					img.onload = function () {
+						photo.w = img.naturalWidth || 0;
+						photo.h = img.naturalHeight || 0;
+						resolve(photo);
+					};
 					img.onerror = function () { resolve(null); };
 					img.src = photo.path;
 				});
@@ -1910,6 +1939,7 @@ var hsVars = {
 			}
 
 			sectionNavEl.style.display = 'flex';
+			sectionNavEl.dataset.active = 'true';
 			updateLabel(0);
 
 			$carousel.on('afterChange', function (event, slick, currentSlide) {
@@ -1929,54 +1959,145 @@ var hsVars = {
 
 		function wireFullscreen() {
 			var overlay = document.getElementById('photo-fullscreen-overlay');
-			if (!overlay) {
-				overlay = document.createElement('div');
-				overlay.id = 'photo-fullscreen-overlay';
-				overlay.className = 'photo-fullscreen-overlay';
-				overlay.innerHTML = '<button type="button" class="photo-fullscreen-close" aria-label="Close full screen">&times;</button><img alt="">';
-				document.body.appendChild(overlay);
+			if (overlay) { return; }
 
-				var overlayImg = overlay.querySelector('img');
-				var closeOverlay = function () {
-					overlay.classList.remove('is-open');
-					overlayImg.removeAttribute('src');
-				};
-				overlay.querySelector('.photo-fullscreen-close').addEventListener('click', closeOverlay);
-				overlay.addEventListener('click', function (event) {
-					if (event.target === overlay) { closeOverlay(); }
-				});
-				document.addEventListener('keydown', function (event) {
-					if (event.key === 'Escape' && overlay.classList.contains('is-open')) { closeOverlay(); }
-				});
+			overlay = document.createElement('div');
+			overlay.id = 'photo-fullscreen-overlay';
+			overlay.className = 'photo-fullscreen-overlay';
+			overlay.innerHTML = '<button type="button" class="photo-fullscreen-close" aria-label="Close full screen">&times;</button>' +
+				'<button type="button" class="photo-fullscreen-nav photo-fullscreen-prev" aria-label="Previous photo">&#8249;</button>' +
+				'<img alt="">' +
+				'<button type="button" class="photo-fullscreen-nav photo-fullscreen-next" aria-label="Next photo">&#8250;</button>';
+			document.body.appendChild(overlay);
 
-				document.addEventListener('click', function (event) {
-					var btn = event.target.closest && event.target.closest('.photo-fullscreen-btn');
-					if (!btn) { return; }
-					var img = btn.parentNode.querySelector('img');
-					if (!img) { return; }
-					overlayImg.src = img.src;
-					overlayImg.alt = img.alt;
-					overlay.classList.add('is-open');
-				});
+			var overlayImg = overlay.querySelector('img');
+			var prevBtn = overlay.querySelector('.photo-fullscreen-prev');
+			var nextBtn = overlay.querySelector('.photo-fullscreen-next');
+			var galleryItems = [];
+			var currentIndex = -1;
+
+			function showAt(index) {
+				if (!galleryItems.length) { return; }
+				if (index < 0) { index = galleryItems.length - 1; }
+				if (index >= galleryItems.length) { index = 0; }
+				currentIndex = index;
+				overlayImg.src = galleryItems[index].src;
+				overlayImg.alt = galleryItems[index].alt;
 			}
+
+			function closeOverlay() {
+				overlay.classList.remove('is-open');
+				overlayImg.removeAttribute('src');
+				galleryItems = [];
+				currentIndex = -1;
+			}
+
+			overlay.querySelector('.photo-fullscreen-close').addEventListener('click', closeOverlay);
+			prevBtn.addEventListener('click', function (event) { event.stopPropagation(); showAt(currentIndex - 1); });
+			nextBtn.addEventListener('click', function (event) { event.stopPropagation(); showAt(currentIndex + 1); });
+			overlay.addEventListener('click', function (event) {
+				if (event.target === overlay) { closeOverlay(); }
+			});
+			document.addEventListener('keydown', function (event) {
+				if (!overlay.classList.contains('is-open')) { return; }
+				if (event.key === 'Escape') { closeOverlay(); }
+				else if (event.key === 'ArrowLeft') { showAt(currentIndex - 1); }
+				else if (event.key === 'ArrowRight') { showAt(currentIndex + 1); }
+			});
+
+			document.addEventListener('click', function (event) {
+				var btn = event.target.closest && event.target.closest('.photo-fullscreen-btn');
+				if (!btn) { return; }
+				var container = btn.closest('.event-photo-carousel, .event-photo-justified');
+				var btns;
+				if (container) {
+					btns = Array.prototype.slice.call(container.querySelectorAll('.photo-fullscreen-btn'))
+						.filter(function (b) { return !(b.closest && b.closest('.slick-cloned')); });
+				} else {
+					btns = [btn];
+				}
+				galleryItems = btns.map(function (b) {
+					var im = b.parentNode.querySelector('img');
+					return im ? { src: im.src, alt: im.alt } : null;
+				}).filter(Boolean);
+
+				var start = 0;
+				for (var k = 0; k < btns.length; k++) {
+					if (btns[k] === btn) { start = k; break; }
+				}
+				var multi = galleryItems.length > 1;
+				prevBtn.style.display = multi ? '' : 'none';
+				nextBtn.style.display = multi ? '' : 'none';
+				showAt(start);
+				overlay.classList.add('is-open');
+			});
 		}
 
-		function renderMosaic(photos) {
+		function renderJustified(photos) {
 			var sections = buildSections(photos);
 			var html = sections.map(function (section, idx) {
 				var end = (idx + 1 < sections.length) ? sections[idx + 1].start : photos.length;
 				var items = photos.slice(section.start, end).map(function (photo) {
-					return '<figure class="mosaic-item">' +
+					var aspect = (photo.w && photo.h) ? (photo.w / photo.h) : 1.5;
+					return '<figure class="justified-item" data-aspect="' + aspect.toFixed(4) + '" data-aos="fade-up">' +
 						'<img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
 						FULLSCREEN_BTN +
 						'</figure>';
 				}).join('');
-				return '<section class="mosaic-section">' +
-					'<h3 class="mosaic-section-title">' + escapeHtml(formatCategory(section.name)) + '</h3>' +
-					'<div class="mosaic-grid">' + items + '</div>' +
+				return '<section class="justified-section">' +
+					'<h3 class="justified-section-title" data-aos="fade-up">' + escapeHtml(formatCategory(section.name)) + '</h3>' +
+					'<div class="justified-grid">' + items + '</div>' +
 					'</section>';
 			}).join('');
-			mosaicEl.innerHTML = html;
+			justifiedEl.innerHTML = html;
+		}
+
+		function layoutJustifiedGrid(grid) {
+			var items = Array.prototype.slice.call(grid.querySelectorAll('.justified-item'));
+			if (!items.length) { return; }
+			var gap = 8;
+			var containerWidth = grid.clientWidth;
+			if (!containerWidth) { return; }
+			var targetH = window.innerWidth <= 991 ? 200 : 240;
+
+			function commit(rowItems, height, isLast) {
+				var n = rowItems.length;
+				var available = containerWidth - gap * (n - 1);
+				var used = 0;
+				rowItems.forEach(function (it, i) {
+					var w;
+					if (i === n - 1 && !isLast) {
+						w = available - used;
+					} else {
+						w = Math.round(height * it.aspect);
+						used += w;
+					}
+					it.el.style.width = w + 'px';
+					it.el.style.height = Math.round(height) + 'px';
+				});
+			}
+
+			var row = [];
+			var rowAspectSum = 0;
+			items.forEach(function (el) {
+				var aspect = parseFloat(el.getAttribute('data-aspect')) || 1.5;
+				row.push({ el: el, aspect: aspect });
+				rowAspectSum += aspect;
+				var height = (containerWidth - gap * (row.length - 1)) / rowAspectSum;
+				if (height <= targetH) {
+					commit(row, height, false);
+					row = [];
+					rowAspectSum = 0;
+				}
+			});
+			if (row.length) {
+				var fullH = (containerWidth - gap * (row.length - 1)) / rowAspectSum;
+				commit(row, Math.min(targetH, fullH), true);
+			}
+		}
+
+		function relayoutJustified() {
+			Array.prototype.forEach.call(justifiedEl.querySelectorAll('.justified-grid'), layoutJustifiedGrid);
 		}
 
 		function wireViewToggle() {
@@ -1989,11 +2110,14 @@ var hsVars = {
 					Array.prototype.forEach.call(viewToggleEl.querySelectorAll('.view-toggle-btn'), function (b) {
 						b.classList.toggle('is-active', b === btn);
 					});
-					var showMosaic = (view === 'mosaic');
-					mosaicEl.hidden = !showMosaic;
-					carouselEl.style.display = showMosaic ? 'none' : '';
-					sectionNavEl.style.display = showMosaic ? 'none' : 'flex';
-					if (!showMosaic) {
+					var showGallery = (view === 'gallery');
+					justifiedEl.hidden = !showGallery;
+					carouselEl.style.display = showGallery ? 'none' : '';
+					sectionNavEl.style.display = (!showGallery && sectionNavEl.dataset.active) ? 'flex' : 'none';
+					if (showGallery) {
+						relayoutJustified();
+						if (window.AOS) { window.AOS.refresh(); }
+					} else {
 						window.jQuery(carouselEl).slick('setPosition');
 					}
 				});
@@ -2028,8 +2152,22 @@ var hsVars = {
 
 			wireFullscreen();
 			wireSectionNav(photos);
-			renderMosaic(photos);
+			renderJustified(photos);
 			wireViewToggle();
+
+			if (window.AOS) {
+				window.AOS.init({ once: true, duration: 600, offset: 80 });
+			}
+
+			var resizeTimer;
+			window.addEventListener('resize', function () {
+				if (justifiedEl.hidden) { return; }
+				window.clearTimeout(resizeTimer);
+				resizeTimer = window.setTimeout(function () {
+					relayoutJustified();
+					if (window.AOS) { window.AOS.refresh(); }
+				}, 150);
+			});
 		}
 
 		function init() {
