@@ -943,6 +943,13 @@ margin-bottom: 0rem;
 	.event-photo-slide { padding: 0 10px; box-sizing: border-box; }
 	.event-photo-slide figure {
 		margin: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.event-photo-slide .event-photo-frame {
+		width: 100%;
 		height: 360px;
 		display: flex;
 		align-items: center;
@@ -1025,7 +1032,7 @@ margin-bottom: 0rem;
 	}
 	@media (max-width: 991px) {
 		.event-photo-carousel { width: 92vw; max-width: 92vw; }
-		.event-photo-slide figure { height: 280px; }
+		.event-photo-slide .event-photo-frame { height: 280px; }
 		.event-photo-slide img { height: 280px !important; max-height: 280px !important; }
 	}
 </style>
@@ -1787,7 +1794,7 @@ var hsVars = {
 			carouselEl.innerHTML = photos.map(function (photo) {
 				var caption = photo.category ? '<figcaption>' + escapeHtml(photo.category) + '</figcaption>' : '';
 				return '<div class="event-photo-slide"><figure>' +
-					'<img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy">' +
+					'<span class="event-photo-frame"><img src="' + escapeHtml(photo.path) + '" alt="' + escapeHtml(photo.alt) + '" loading="lazy"></span>' +
 					caption + '</figure></div>';
 			}).join('');
 
