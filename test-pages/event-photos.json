@@ -1,28 +1,38 @@
 [
   {
-    "path": "images/EventPhotos/CoachCPhotos/Carter-2.jpg",
-    "alt": "Coach CPhotos — Carter 2",
-    "category": "CoachCPhotos"
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-2.jpg",
+    "alt": "Coach Carter Photos — Carter 2",
+    "category": "Coach Carter Photos"
   },
   {
-    "path": "images/EventPhotos/CoachCPhotos/Carter-9.jpg",
-    "alt": "Coach CPhotos — Carter 9",
-    "category": "CoachCPhotos"
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-9.jpg",
+    "alt": "Coach Carter Photos — Carter 9",
+    "category": "Coach Carter Photos"
   },
   {
-    "path": "images/EventPhotos/CoachCPhotos/Carter-17.jpg",
-    "alt": "Coach CPhotos — Carter 17",
-    "category": "CoachCPhotos"
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-12.jpg",
+    "alt": "Coach Carter Photos — Carter 12",
+    "category": "Coach Carter Photos"
   },
   {
-    "path": "images/EventPhotos/CoachCPhotos/Carter-186.jpg",
-    "alt": "Coach CPhotos — Carter 186",
-    "category": "CoachCPhotos"
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-14.jpg",
+    "alt": "Coach Carter Photos — Carter 14",
+    "category": "Coach Carter Photos"
   },
   {
-    "path": "images/EventPhotos/CoachCPhotos/Carter-207.jpg",
-    "alt": "Coach CPhotos — Carter 207",
-    "category": "CoachCPhotos"
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-17.jpg",
+    "alt": "Coach Carter Photos — Carter 17",
+    "category": "Coach Carter Photos"
+  },
+  {
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-186.jpg",
+    "alt": "Coach Carter Photos — Carter 186",
+    "category": "Coach Carter Photos"
+  },
+  {
+    "path": "images/EventPhotos/Coach Carter Photos/Carter-207.jpg",
+    "alt": "Coach Carter Photos — Carter 207",
+    "category": "Coach Carter Photos"
   },
   {
     "path": "images/EventPhotos/KickOff/Kic-105.jpg",
@@ -40,8 +50,18 @@
     "category": "KickOff"
   },
   {
+    "path": "images/EventPhotos/Luncheon/BMW-18.jpg",
+    "alt": "Luncheon — BMW 18",
+    "category": "Luncheon"
+  },
+  {
     "path": "images/EventPhotos/Luncheon/BMW-49.jpg",
     "alt": "Luncheon — BMW 49",
+    "category": "Luncheon"
+  },
+  {
+    "path": "images/EventPhotos/Luncheon/BMW-53.jpg",
+    "alt": "Luncheon — BMW 53",
     "category": "Luncheon"
   },
   {
