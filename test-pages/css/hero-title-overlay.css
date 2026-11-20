@@ -1,0 +1,13 @@
+.description_lead {
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.widget_1678223349310 .description_lead {
+  top: -150px;
+}
