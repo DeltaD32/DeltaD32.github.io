@@ -102,16 +102,6 @@
     document.body.insertBefore(banner, document.body.firstChild);
     document.body.appendChild(floatingIcon);
 
-    function updateBannerHeight() {
-      document.body.style.setProperty('--xchange-banner-height', banner.offsetHeight + 'px');
-    }
-
-    updateBannerHeight();
-    window.addEventListener('resize', updateBannerHeight);
-    if (window.ResizeObserver) {
-      new ResizeObserver(updateBannerHeight).observe(banner);
-    }
-
     if (isDismissed()) {
       // Returning visitor — show only the floating icon, no banner animation
       showFloatingIcon(floatingIcon);

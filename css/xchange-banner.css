@@ -124,7 +124,7 @@
 
 /* ---- Navbar offset when banner is open ---- */
 body.xchange-banner-open nav#navbar-main {
-  top: 100px !important;
+  top: var(--xchange-banner-height, 100px) !important;
   transition: top 0.4s ease !important;
 }
 
